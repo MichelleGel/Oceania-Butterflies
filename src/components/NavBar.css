@@ -1,0 +1,69 @@
+/* Navbar.css */
+
+.navbar {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  background-color: rgb(10, 46, 37);
+  padding: 1rem 2rem;
+  box-shadow: 0 2px 4px white;
+  z-index: 1000;
+}
+
+.navbar-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.navbar-logo {
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: white;
+}
+
+.menu-button {
+  background: none;
+  border: none;
+  font-size: 1.5rem;
+  cursor: pointer;
+  display: none;
+}
+
+/* Desktop menu */
+.navbar-links {
+  list-style: none;
+  display: flex;
+  gap: 2rem;
+  margin: 0;
+  padding: 0;
+}
+
+.navbar-links li a {
+  text-decoration: none;
+  color: white;
+  transition: color 0.3s;
+}
+
+/* Active link */
+.active-link {
+  color: green;
+  font-weight: bold;
+}
+
+/* Mobile styles */
+@media (max-width: 768px) {
+  .menu-button {
+    display: block;
+  }
+
+  .navbar-links {
+    flex-direction: column;
+    display: none;
+    margin-top: 1rem;
+  }
+
+  .navbar-links.menu-open {
+    display: flex;
+  }
+}
