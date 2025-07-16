@@ -15,7 +15,7 @@ body {
   font-family: 'Open Sans', sans-serif;
 }
 
-.card-image-container img {
+/*.card-image-container img {
   width: 100%;
   border-radius: 5px;
   margin-bottom: 10px;
@@ -36,7 +36,7 @@ body {
   font-size: 14px;
   margin-bottom: 20px;
   line-height: 1.4;
-}
+}*/
 
 .card-buttons {
   display: flex;

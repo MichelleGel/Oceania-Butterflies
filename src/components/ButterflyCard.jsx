@@ -1,27 +1,32 @@
-import './ButterflyCard.css';
+import "./ButterflyCard.css";
+// --- CONFIGURACIÓN DE CLOUDINARY ---
+// ¡IMPORTANTE! Reemplaza 'tu-cloud-name-aqui' con tu Cloud Name real.
+const CLOUD_NAME = "da3higfux";
+const CLOUDINARY_URL_BASE = `https://res.cloudinary.com/${CLOUD_NAME}/image/upload`;
 
-const ButterflyCard = () => {
+// Estas son las transformaciones que le pedimos a Cloudinary.
+// w_400 = ancho 400px, f_auto = formato automático, q_auto = calidad automática.
+const TRANSFORMATIONS =
+  "e_background_removal,w_200,h_200,c_pad,b_transparent,f_auto,q_auto";
+
+// --- DEFINICIÓN DEL COMPONENTE ---
+// Este es nuestro componente. Recibe un objeto "butterfly" con todos los datos.
+const ButterflyCard = ({ butterfly }) => {
+  // Construimos la URL completa de la imagen en Cloudinary
+  const imageUrl = `${CLOUDINARY_URL_BASE}/${TRANSFORMATIONS}/${butterfly.publicId}.png`;
+
+  // Esto es lo que el componente mostrará en pantalla (es JSX, parece HTML).
   return (
     <div className="card">
-      <div className="card-image-container">
-        <img
-          src="https://ejemplo.com/imagen.png"
-          alt="Imagen de la mariposa"
-        />
-      </div>
-      <h2 className="card-title">Danaus plexippus</h2>
-      <p className="card-subtitle">Mariposa monarca</p>
-      <p className="card-description">
-        Es quizás la más conocida de todas las mariposas de América del Norte.
-        Desde el siglo XIX ha sido introducida en Nueva Zelanda y en Australia.
-      </p>
-      <div className="card-buttons">
-        <button className="button edit">Editar</button>
-        <button className="button view">Ver Ficha Completa</button>
-        <button className="button delete">Eliminar</button>
-      </div>
+      <img src={imageUrl} alt={`Imagen de ${butterfly.commonName}`} />
+      <h2>{butterfly.commonName}</h2>
+      <h3>{butterfly.scientificName}</h3>
+      <p>{butterfly.description}</p>
+      <p>{butterfly.threatLevel}</p>
+
     </div>
   );
 };
 
+// Esta línea permite que otros archivos usen nuestro componente.
 export default ButterflyCard;
