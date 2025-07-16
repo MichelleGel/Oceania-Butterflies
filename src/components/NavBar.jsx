@@ -1,7 +1,7 @@
 const NavBar=()=>{
     return (
         <>
-    mi navbar
+        mi navbar
         </>
     )
 }
