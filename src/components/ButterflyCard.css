@@ -5,7 +5,6 @@ body {
 }
 
 .card {
-  border: 1px solid #ccc;
   padding: 20px;
   width: 300px;
   border-radius: 10px;
@@ -15,13 +14,7 @@ body {
   font-family: 'Open Sans', sans-serif;
 }
 
-/*.card-image-container img {
-  width: 100%;
-  border-radius: 5px;
-  margin-bottom: 10px;
-}
-
-.card-title {
+/*.card-title {
   font-size: 20px;
   margin-bottom: 5px;
 }
@@ -37,30 +30,3 @@ body {
   margin-bottom: 20px;
   line-height: 1.4;
 }*/
-
-.card-buttons {
-  display: flex;
-  gap: 10px;
-  flex-wrap: wrap;
-}
-
-.button {
-  padding: 8px 12px;
-  font-size: 14px;
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
-  color: #fff;
-}
-
-.button.edit {
-  background-color: #F4C430;
-}
-
-.button.view {
-  background-color: #F4C430;;
-}
-
-.button.delete {
-  background-color: #F4C430;
-}
