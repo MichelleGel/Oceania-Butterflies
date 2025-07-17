@@ -1,4 +1,21 @@
-.searchContainer{
-    display: flex;
-gap: 10px;
+.searchContainer {
+  display: flex;
+  justify-content:space-around; 
+  align-items: center;
+}
+.threatButtons {
+  display: flex;
+  gap: 10px;
+}
+.threatContainer{
+  background-color: bisque;
+  padding: 0.5%;
+  border-radius: 5px;
+  align-items: center;
+  margin: aut;
+}
+
+.threatTitle{
+text-align: center;
+margin: auto;
 }

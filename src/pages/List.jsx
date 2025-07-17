@@ -9,7 +9,7 @@ const List = () => {
   const [selectedRegion, setSelectedRegion] = useState("Todas"); //Este es para la Region lo iniciamos en Todas para que se vean todas desde el inicio.
   const [selectedThreat, setSelectedThreat] = useState("Todas");
 
-    const handleClearFilters = () => {
+  const handleClearFilters = () => {
     setSearchTerm("");
     setSelectedRegion("Todas");
     setSelectedThreat("Todas");
@@ -27,31 +27,33 @@ const List = () => {
       .toLowerCase()
       .includes(searchTerm.toLowerCase());
 
-    const threatMatch = 
-        selectedThreat === "Todas" || butterfly.threatLevel === selectedThreat;
+    const threatMatch =
+      selectedThreat === "Todas" || butterfly.threatLevel === selectedThreat;
 
     return regionMatch && searchMatch && threatMatch;
   });
   return (
     <>
-      <h1> Mariposas de Oceanía </h1>
-      <SearchBar
-        onSearchChange={setSearchTerm} // Pasa la función para actualizar el término de búsqueda
-        onRegionChange={setSelectedRegion} // Pasa la función para actualizar la región
-        onThreatChange={setSelectedThreat}
-        onClearAll={handleClearFilters}
-      />
-      <div className="butterfly-list-container">
-        {filteredButterflies.map(
-          (
-            butterfly //Accedemos a la base de datos y la recorremos mediante el map. Cada elemento que recorre se llamará butterfly (está en el paréntesis de la función)
-          ) => (
-            <ButterflyCard //Llamamos al componente donde se encuentran las tarjetas.
-              key={butterfly.id} // Identifica al elemento, escogemos id porque es único para cada mariposa.
-              butterfly={butterfly}
-            />
-          )
-        )}
+      <div className="listPage">
+        <h1> Mariposas de Oceanía </h1>
+        <SearchBar
+          onSearchChange={setSearchTerm} // Pasa la función para actualizar el término de búsqueda
+          onRegionChange={setSelectedRegion} // Pasa la función para actualizar la región
+          onThreatChange={setSelectedThreat}
+          onClearAll={handleClearFilters}
+        />
+        <div className="butterfly-list-container">
+          {filteredButterflies.map(
+            (
+              butterfly //Accedemos a la base de datos y la recorremos mediante el map. Cada elemento que recorre se llamará butterfly (está en el paréntesis de la función)
+            ) => (
+              <ButterflyCard //Llamamos al componente donde se encuentran las tarjetas.
+                key={butterfly.id} // Identifica al elemento, escogemos id porque es único para cada mariposa.
+                butterfly={butterfly}
+              />
+            )
+          )}
+        </div>
       </div>
     </>
   );

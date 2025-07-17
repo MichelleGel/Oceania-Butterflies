@@ -15,9 +15,14 @@ const SearchBar = ({ onSearchChange, onRegionChange, onThreatChange,onClearAll  
       <button onClick={() => onRegionChange("Australia")}>Australia</button>
       <button onClick={() => onRegionChange("Nueva Zelanda")}>Nueva Zelanda</button>
       <button onClick={() => onRegionChange("Islas del Pacífico")}>Islas del Pacífico</button>
+      <div className="threatContainer">
+        <p className="threatTitle">Tipo de Amenaza</p>
+      <div className="threatButtons">  
       <button onClick={() => onThreatChange("Vulnerable")}>Vulnerable</button>
       <button onClick={() => onThreatChange("Preocupación menor")}>Preocupación menor</button>
       <button onClick={() => onThreatChange("En peligro crítico")}>En peligro crítico</button>
+      </div>
+      </div>
       </div>
   );
 };
