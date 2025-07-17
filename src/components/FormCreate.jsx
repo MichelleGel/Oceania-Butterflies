@@ -28,6 +28,7 @@ const FormCreate = () => {
         imageFile: null
     });
     const fileInputRef = useRef(null);
+    const [imageInputType, setImageInputType] = useState("url");//Controla la pestaña de URL y añadir imagen
     const handleChange = (e) => {
         const { name, value } = e.target;
         //Si es un campo dentro de coordinadas
@@ -99,68 +100,94 @@ const FormCreate = () => {
                     <div className="form-grid">
                         <label className="image-field">
                             Fotografía:
-                            
-                            <input
-                                type="text"
-                                placeholder="Pega una URL de imagen"
-                                value={formData.publicId}
-                                onChange={(e) =>
-                                    setFormData((prev) => ({
-                                        ...prev,
-                                        publicId: e.target.value,
-                                        imageFile: null,
-                                    }))
-                                }
-                                className="image-url-input"
-                            />
-
-                            <div
-                                className="drop-area"
-                                onDrop={(e) => {
-                                    e.preventDefault();
-                                    const file = e.dataTransfer.files[0];
-                                    if (file && file.type.startsWith("image/")) {
-                                        setFormData((prev) => ({
-                                            ...prev,
-                                            imageFile: file,
-                                            publicId: "",
-                                        }));
-                                    }
-                                }}
-                                onDragOver={(e) => e.preventDefault()}
-                                onClick={() => fileInputRef.current.click()}
-                            >
-                                {formData.imageFile || formData.publicId ? (
-                                    <img
-                                        src={
-                                            formData.imageFile
-                                                ? URL.createObjectURL(formData.imageFile)
-                                                : formData.publicId
-                                        }
-                                        alt="Vista previa"
-                                        className="image-preview"
-                                    />
-                                ) : (
-                                    <span>Arrastra una imagen aquí o haz clic</span>
-                                )}
+                            <div className="image-toggle-buttons">
+                                <button
+                                    type="button"
+                                    className={imageInputType === "file" ? "active" : ""}
+                                    onClick={() => setImageInputType("file")}
+                                >
+                                    Subir imagen
+                                </button>
+                                <button
+                                    type="button"
+                                    className={imageInputType === "url" ? "active" : ""}
+                                    onClick={() => setImageInputType("url")}
+                                >
+                                    URL
+                                </button>
                             </div>
+                            {imageInputType === "url" && (
+                                <>
+                                    <input
+                                        type="text"
+                                        placeholder="Pega una URL de imagen"
+                                        value={formData.publicId}
+                                        onChange={(e) =>
+                                            setFormData((prev) => ({
+                                                ...prev,
+                                                publicId: e.target.value,
+                                                imageFile: null,
+                                            }))
+                                        }
+                                        className="image-url-input"
+                                    />
+                                    {formData.publicId && (
+                                        <img
+                                            src={formData.publicId}
+                                            alt="Vista previa URL"
+                                            className="image-preview"
+                                        />
+                                    )}
+                                </>
+                            )}
 
-                            <input
-                                type="file"
-                                accept="image/*"
-                                ref={fileInputRef}
-                                style={{ display: "none" }}
-                                onChange={(e) => {
-                                    const file = e.target.files[0];
-                                    if (file && file.type.startsWith("image/")) {
-                                        setFormData((prev) => ({
-                                            ...prev,
-                                            imageFile: file,
-                                            publicId: "",
-                                        }));
-                                    }
-                                }}
-                            />
+                            {imageInputType === "file" && (
+                                <>
+                                    <div
+                                        className="drop-area"
+                                        onDrop={(e) => {
+                                            e.preventDefault();
+                                            const file = e.dataTransfer.files[0];
+                                            if (file && file.type.startsWith("image/")) {
+                                                setFormData((prev) => ({
+                                                    ...prev,
+                                                    imageFile: file,
+                                                    publicId: "",
+                                                }));
+                                            }
+                                        }}
+                                        onDragOver={(e) => e.preventDefault()}
+                                        onClick={() => fileInputRef.current.click()}
+                                    >
+                                        {formData.imageFile ? (
+                                            <img
+                                                src={URL.createObjectURL(formData.imageFile)}
+                                                alt="Vista previa"
+                                                className="image-preview"
+                                            />
+                                        ) : (
+                                            <span>Arrastra una imagen aquí o haz clic</span>
+                                        )}
+                                    </div>
+
+                                    <input
+                                        type="file"
+                                        accept="image/*"
+                                        ref={fileInputRef}
+                                        style={{ display: "none" }}
+                                        onChange={(e) => {
+                                            const file = e.target.files[0];
+                                            if (file && file.type.startsWith("image/")) {
+                                                setFormData((prev) => ({
+                                                    ...prev,
+                                                    imageFile: file,
+                                                    publicId: "",
+                                                }));
+                                            }
+                                        }}
+                                    />
+                                </>
+                            )}
                         </label><br></br>
                         <label>
                             Nombre común:
@@ -333,7 +360,7 @@ const FormCreate = () => {
                                 onChange={handleChange}
                             />
                         </label>
-                        
+
                     </div>
                     <button type="submit">Guardar mariposa</button>
                 </form>
