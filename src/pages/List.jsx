@@ -2,13 +2,14 @@ import { useState } from 'react';
 import ButterflyCard from "../components/ButterflyCard"; //Importamos el componente ButterflyCard y que contiene las tarjetas. 
 import "./list.css"; //Importamos el CSS que le da estilo a esta página en particular
 import ButterflyData from '/server/butterfly.json' //Importamos nuestra base de datos. 
-import SearchBar from "../components/SearchBar";
+import SearchBar from "../components/SearchBar"; //Importamos el componente de SearchBar
 
 const List=()=> {
-  const [searchTerm, setSearchTerm] = useState('');
-  const [selectedRegion, setSelectedRegion] = useState('Todas');
-  // Lógica de filtrado
-  const filteredButterflies = ButterflyData.butterfly.filter(butterfly => {
+  const [searchTerm, setSearchTerm] = useState(''); //Con el useState vamos a guardar el texto de busqueda, lo inicializamos vacio. 
+  const [selectedRegion, setSelectedRegion] = useState('Todas'); //Este es para la Region lo iniciamos en Todas para que se vean todas desde el inicio.
+  // Lógica de filtrado.
+  //filteredButterflies va a guardar la lista de las mariposas dependiendo la filtración.
+  const filteredButterflies = ButterflyData.butterfly.filter(butterfly => { //filter() Es una función de JavaScript que crea una nueva lista solo con los elementos que cumplen una condición.
     // Filtro por región
     const regionMatch = selectedRegion === 'Todas' || butterfly.region === selectedRegion;
     
