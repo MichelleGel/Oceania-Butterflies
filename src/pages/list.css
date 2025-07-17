@@ -1,0 +1,4 @@
+.butterfly-list-container{
+    display: flex;
+    flex-wrap: wrap;
+}
