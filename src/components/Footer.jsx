@@ -1,7 +1,7 @@
 const Footer=()=> {
     return (
         <>
-    mi footer
+    {/* mi footer */}
         </>
     )
 }
