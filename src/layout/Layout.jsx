@@ -10,15 +10,6 @@ const Layout = () => {
         <>
             <NavBar />
             <Outlet />
-            
-            <div className="gallery-container">
-                {
-                    butterfliesData.butterfly.map(butterfly => (
-                        <ButterflyCard key={butterfly.id} butterfly={butterfly} />
-                    ))
-                }
-            </div>
-
             <Footer />
             <List/>
         </>

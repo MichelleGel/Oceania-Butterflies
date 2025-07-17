@@ -8,7 +8,7 @@
   gap: 10px;
 }
 .threatContainer{
-  background-color: bisque;
+  background-color: #B7B7A4;
   padding: 0.5%;
   border-radius: 5px;
   align-items: center;
@@ -18,4 +18,17 @@
 .threatTitle{
 text-align: center;
 margin: auto;
+}
+
+.regionContainer{
+  background-color: #B7B7A4;
+  padding: 0.5%;
+  border-radius: 5px;
+  align-items: center;
+  margin: aut;
+}
+
+.regionButtons {
+  display: flex;
+  gap: 10px;
 }

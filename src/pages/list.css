@@ -10,4 +10,12 @@
 }
 body{
 margin: auto;
+background-color: #E0E6D8;
+}
+
+.searchBarinput{
+    width: 25vw;
+    height: 2vw;
+    border-radius: 15px;
+
 }
