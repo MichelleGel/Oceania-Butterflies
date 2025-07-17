@@ -7,7 +7,7 @@ const CLOUDINARY_URL_BASE = `https://res.cloudinary.com/${CLOUD_NAME}/image/uplo
 // Estas son las transformaciones que le pedimos a Cloudinary.
 // w_400 = ancho 400px, f_auto = formato automático, q_auto = calidad automática.
 const TRANSFORMATIONS =
-  "e_background_removal,w_200,h_200,c_pad,b_transparent,f_auto,q_auto";
+  "e_background_removal,w_250,h_250,c_pad,b_transparent,f_auto,q_auto";
 
 // --- DEFINICIÓN DEL COMPONENTE ---
 // Este es nuestro componente. Recibe un objeto "butterfly" con todos los datos.
@@ -19,11 +19,9 @@ const ButterflyCard = ({ butterfly }) => {
   return (
     <div className="card">
       <img src={imageUrl} alt={`Imagen de ${butterfly.commonName}`} />
-      <h2>{butterfly.commonName}</h2>
-      <h3>{butterfly.scientificName}</h3>
-      <p>{butterfly.description}</p>
-      <p>{butterfly.threatLevel}</p>
-
+      <h2 className="card-title">{butterfly.commonName}</h2>
+      <h3 className="card-subtitle">{butterfly.scientificName}</h3>
+      <p className="card-description">{butterfly.description}</p>
     </div>
   );
 };
