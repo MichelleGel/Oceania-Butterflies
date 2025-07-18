@@ -145,10 +145,14 @@ const FormCreate = () => {
             </label>
 
             <label>
-              Región:
-              <input type="text" {...register("region", { required: true})} />
+             <span className="required-label">Región:</span> 
+              <select type="text" {...register("region", { required: true})}>
+                <option value="">Selecciona una región</option>
+                <option value="Australia">Australia</option>
+                <option value="Nueva Zelanda">Nueva Zelanda</option>
+                <option value="Islas del Pacífico">Islas del Pacífico</option>
+              </select>
             </label>
-
             <label>
               Localización específica:
               <input type="text" {...register("specificLocation")} />
@@ -175,8 +179,13 @@ const FormCreate = () => {
             </label>
 
             <label>
-              Nivel de amenaza:
-              <input type="text" {...register("threatLevel")} />
+              <span className="required-label">Nivel de amenaza:</span>
+              <select {...register("threatLevel", { required: true})}>
+                <option value="">Selecciona nivel de amenaza</option>
+                <option value="vulnerable">Vulnerable</option>
+                <option value="preocupación menor">Preocupación menor</option>
+                <option value="en peligro crítico">En peligro crítico</option>
+              </select>
             </label>
 
             <label>

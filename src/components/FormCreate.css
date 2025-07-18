@@ -97,7 +97,8 @@ body {
   margin-bottom: 1rem;
 }
 .form-card input,
-.form-card textarea {
+.form-card textarea,
+.form-card select {
   margin-top: 0.5rem;
   padding: 0.5rem;
   border: 1px solid #ccc;
