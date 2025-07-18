@@ -1,7 +1,10 @@
+import TestServices from '../services/TestServices';
+
 function Home() {
+
     return (
         <>
-        home
+        <TestServices />
         </>
     )
 }

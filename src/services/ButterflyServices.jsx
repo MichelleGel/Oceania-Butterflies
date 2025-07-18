@@ -15,8 +15,6 @@ export const getAllButterflies = async() => {
         throw error;
     }
 }
-const butterflies = await getAllButterflies();
-console.log(butterflies);
 
 
 //Para ver de a UNA SOLA Mariposa
@@ -30,8 +28,6 @@ export const getOneButterfly = async (id) => {
         throw error; 
     }
 };
-const butterfly = await getOneButterfly();
-console.log(butterfly);
 
 
 //Metodo POST para el CREATE
@@ -41,7 +37,7 @@ export const createButterfly = async(newbutterfly)=>{
         return res.data;
     }
     catch (error) {
-        console.error('createButterfly error:', error.message);
+        console.error(`createButterfly error:`, error.message);
         throw error;
     }
 };
@@ -55,7 +51,7 @@ export const updateButterfly = async (id, editedButterfly) => {
         return res.data;
     }
     catch (error) {
-        console.error('updateButterfly ID ${id} error:', error.message);
+        console.error(`updateButterfly ID ${id} error:`, error.message);
         throw error;
     }
 }
@@ -67,7 +63,7 @@ export const deleteButterfly = async (id) => {
         return res.data;
         }
         catch (error) {
-            console.error('deleteButterfly ID ${id} error:', error.message);
+            console.error(`deleteButterfly ID ${id} error:`, error.message);
             throw error;
         }
     }
