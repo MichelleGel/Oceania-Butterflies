@@ -16,9 +16,17 @@ const Button = ({ title, action, tooltip }) => {
         try {
             const result = await action();//Ejecuta el metodo CRUD recibido como prop
             setMessage('Acción completada correctamente');
+
+             // Ocultar mensaje después de 3 segundos
+                setTimeout(() => setMessage(''), 2000);
+
             console.log(result);
         } catch (error){
             setMessage('Error al realizar la acción');
+
+             // Ocultar mensaje después de 3 segundos
+                setTimeout(() => setMessage(''), 2000);
+
             console.error(error);
         } finally {
             setLoading(false);

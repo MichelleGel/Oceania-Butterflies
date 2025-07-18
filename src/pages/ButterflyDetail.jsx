@@ -1,8 +1,10 @@
+import ButterflyCard from "../components/ButterflyCard";
+
 const ButterflyDetail=()=>{
 
     return(
         <>
-
+        <ButterflyCard/>
         </>
     )
 }
