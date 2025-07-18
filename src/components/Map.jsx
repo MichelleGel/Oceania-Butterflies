@@ -1,34 +1,14 @@
-// src/components/MapComponent.jsx
-
-import { MapContainer, TileLayer, Marker, Popup } from 'react-leaflet';
+//Para el componente de Mapa usamos la librearía de Leaflet https://leafletjs.com/
+//Para eso tuvimos que instalarlo (npm install react-leaflet@next)
+import { MapContainer, TileLayer, Marker, Popup } from 'react-leaflet'; //Importamos los Hooks de leaflet que vamos a usar.
 import 'leaflet/dist/leaflet.css'; // Importa el CSS de Leaflet
-
-// Arreglo para un bug común con los iconos por defecto en React-Leaflet
 import L from 'leaflet';
-import icon from 'leaflet/dist/images/marker-icon.png';
-import iconShadow from 'leaflet/dist/images/marker-shadow.png';
+
 const CLOUD_NAME = "da3higfux";
 const CLOUDINARY_URL_BASE = `https://res.cloudinary.com/${CLOUD_NAME}/image/upload`;
-const imageUrl = `${CLOUDINARY_URL_BASE}/${TRANSFORMATIONS}/${butterfly.publicId}.png`;
-let defIcon = {butterflies.map(
-    (butterfly) => (
-        <ButterflyCard
-        icon2 = {butterfly.imageUrl}
-        />
-
-    )
-)}
-
-let DefaultIcon = L.icon({
-    iconUrl: icon,
-    shadowUrl: iconShadow,
-    iconSize: [25, 41],
-    iconAnchor: [12, 41]
-});
-L.Marker.prototype.options.icon = DefaultIcon;
-
 
 const MapComponent = ({ butterflies }) => {
+
   // Este componente recibirá la lista de mariposas a mostrar
   return (
     <MapContainer 
@@ -46,20 +26,28 @@ const MapComponent = ({ butterflies }) => {
       {/* TileLayer es la capa visual del mapa. Usamos OpenStreetMap, que es gratis y no necesita clave. */}
 
       {/* Recorremos la lista de mariposas y creamos un Marcador para cada una */}
-      {butterflies.map(butterfly => (
+      {butterflies.map(butterfly =>  {
+        const TRANSFORMATIONS =
+  "e_background_removal,w_250,h_250,c_pad,b_transparent,f_auto,q_auto";
+        const imageUrl = `${CLOUDINARY_URL_BASE}/${TRANSFORMATIONS}/${butterfly.publicId}.png`;
+        const customIcon = new L.Icon({
+          iconUrl: imageUrl,
+          iconSize: [50, 50],
+      });
+      return (
         <Marker 
           key={butterfly.id} 
           position={[butterfly.coordinates.latitude, butterfly.coordinates.longitude]}
+          icon ={customIcon}
         >
-          {/* El Popup es la ventana que aparece al hacer clic en un marcador */}
           <Popup>
             <strong>{butterfly.commonName}</strong><br />
             <em>{butterfly.scientificName}</em>
-            <em>{butterfly.imageUrl}</em>
-            
+            <em>{butterfly.imageUrl}</em>    
           </Popup>
         </Marker>
-      ))}
+      );
+    })}
     </MapContainer>
   );
 };
