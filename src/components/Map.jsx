@@ -29,7 +29,11 @@ const MapComponent = ({ butterflies }) => {
       {butterflies.map(butterfly =>  {
         const TRANSFORMATIONS =
   "e_background_removal,w_250,h_250,c_pad,b_transparent,f_auto,q_auto";
+  const TRANSFORMATIONS2 =
+  "e_background_removal,w_100,h_100,c_pad,b_transparent,f_auto,q_auto";
+
         const imageUrl = `${CLOUDINARY_URL_BASE}/${TRANSFORMATIONS}/${butterfly.publicId}.png`;
+        const imageUrl2 = `${CLOUDINARY_URL_BASE}/${TRANSFORMATIONS2}/${butterfly.publicId}.png`;
         const customIcon = new L.Icon({
           iconUrl: imageUrl,
           iconSize: [50, 50],
@@ -41,9 +45,10 @@ const MapComponent = ({ butterflies }) => {
           icon ={customIcon}
         >
           <Popup>
-            <strong>{butterfly.commonName}</strong><br />
+            <img src={imageUrl2}></img><br/>
+            <strong>{butterfly.commonName}</strong><br/>
             <em>{butterfly.scientificName}</em>
-            <em>{butterfly.imageUrl}</em>    
+             
           </Popup>
         </Marker>
       );
