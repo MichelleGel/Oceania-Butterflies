@@ -1,372 +1,234 @@
 import React, { useState, useRef } from "react";
+import { useForm } from "react-hook-form";
 import "./FormCreate.css";
+
 const FormCreate = () => {
-    const [formData, setFormData] = useState({
-        id: "",
-        commonName: "",
-        scientificName: "",
-        family: "",
-        region: "",
-        specificLocation: "",
-        habitat: "",
-        wingspan: "",
-        description: "",
-        conservationStatus: "",
-        threatLevel: "",
-        population: "",
-        flightSeason: [],
-        hostPlants: [],
-        nectarSources: [],
-        behavior: "",
-        coordinates: {
-            "latitude": "",
-            "longitude": ""
-        },
-        colorPrimary: "",
-        tags: [],
-        publicId: "",
-        imageFile: null
-    });
-    const fileInputRef = useRef(null);
-    const [imageInputType, setImageInputType] = useState("url");//Controla la pestaña de URL y añadir imagen
-    const handleChange = (e) => {
-        const { name, value } = e.target;
-        //Si es un campo dentro de coordinadas
-        if (name.startsWith("coordinates.")) {
-            const field = name.split(".")[1];
-            setFormData((prevData) => ({
-                ...prevData,
-                coordinates: {
-                    ...prevData.coordinates,
-                    [field]: value,
-                },
-            }));
-        } else {
-            //Convierte los campos específicos en arrays
-            const arrayFields = ["flightSeason", "hostPlants", "nectarSources", "tags"];
-            const isArrayField = arrayFields.includes(name);
+  const fileInputRef = useRef(null);
+  const [imageInputType, setImageInputType] = useState("url"); // Controla si se usa URL o subida de imagen
 
-            setFormData((prevData) => ({
-                ...prevData,
-                //.split convierte en array lo que se mete entre comas, y .trim es para quitar los espacios extra
-                [name]: isArrayField ? value.split(",").map(v => v.trim()) : value,
-            }));
-        }
-    };
-    //Aquí se define qué pasa cuando se envía el formulario
-    const handleSubmit = (e) => {
-        e.preventDefault(); //Para que no se recarge la página
-        console.log("Datos enviados", formData)//Imprime los datos del formulario para ver que se están enviando
+  const {
+    register,
+    handleSubmit,
+    setValue,
+    watch,
+    formState: { errors },
+  } = useForm({
+    defaultValues: {
+      commonName: "",
+      scientificName: "",
+      family: "",
+      region: "",
+      specificLocation: "",
+      habitat: "",
+      wingspan: "",
+      description: "",
+      conservationStatus: "",
+      threatLevel: "",
+      population: "",
+      flightSeason: "",
+      hostPlants: "",
+      nectarSources: "",
+      behavior: "",
+      coordinates: { latitude: "", longitude: "" },
+      colorPrimary: "",
+      tags: "",
+      publicId: "",
+      imageFile: null,
+    },
+  });
+
+  const onSubmit = (data) => {
+    console.log("Datos enviados:", data);
+  };
+
+  const handleFileSelect = (e) => {
+    const file = e.target.files[0];
+    if (file && file.type.startsWith("image/")) {
+      setValue("imageFile", file);
+      setValue("publicId", "");
     }
-    const handleImageChange = (e) => {
-        const value = e.target.value;
-        setFormData((prev) => ({
-            ...prev,
-            publicId: value,
-            imageFile: null,
-        }));
-    };
-    const handleDrop = (e) => {
-        e.preventDefault();
-        e.stopPropagation(); //Para que se propague y abra la imagen
-        const file = e.dataTransfer.files[0];
-        if (file && file.type.startsWith("image/")) {
-            setFormData((prev) => ({
-                ...prev,
-                imageFile: file,
-                publicId: "",
-            }));
-        }
-    };
-    const handleClick = () => {
-        fileInputRef.current.click();
-    };
-    const handleFileSelect = (e) => {
-        const file = e.target.files[0];
-        if (file && file.type.startsWith("image/")) {
-            setFormData((prev) => ({
-                ...prev,
-                imageFile: file,
-                publicId: "",
-            }));
-        }
-    };
-    return (
-        <div className="form-container">
-            <div className="form-card">
-                <h1>Agregar nueva Mariposa</h1>
-                <p>Documenta un nuevo avistamiento</p>
-                <form onSubmit={handleSubmit}>
-                    <div className="form-grid">
-                        <label className="image-field">
-                            Fotografía:
-                            <div className="image-toggle-buttons">
-                                <button
-                                    type="button"
-                                    className={imageInputType === "file" ? "active" : ""}
-                                    onClick={() => setImageInputType("file")}
-                                >
-                                    Subir imagen
-                                </button>
-                                <button
-                                    type="button"
-                                    className={imageInputType === "url" ? "active" : ""}
-                                    onClick={() => setImageInputType("url")}
-                                >
-                                    URL
-                                </button>
-                            </div>
-                            {imageInputType === "url" && (
-                                <>
-                                    <input
-                                        type="text"
-                                        placeholder="Pega una URL de imagen"
-                                        value={formData.publicId}
-                                        onChange={(e) =>
-                                            setFormData((prev) => ({
-                                                ...prev,
-                                                publicId: e.target.value,
-                                                imageFile: null,
-                                            }))
-                                        }
-                                        className="image-url-input"
-                                    />
-                                    {formData.publicId && (
-                                        <img
-                                            src={formData.publicId}
-                                            alt="Vista previa URL"
-                                            className="image-preview"
-                                        />
-                                    )}
-                                </>
-                            )}
+  };
 
-                            {imageInputType === "file" && (
-                                <>
-                                    <div
-                                        className="drop-area"
-                                        onDrop={(e) => {
-                                            e.preventDefault();
-                                            const file = e.dataTransfer.files[0];
-                                            if (file && file.type.startsWith("image/")) {
-                                                setFormData((prev) => ({
-                                                    ...prev,
-                                                    imageFile: file,
-                                                    publicId: "",
-                                                }));
-                                            }
-                                        }}
-                                        onDragOver={(e) => e.preventDefault()}
-                                        onClick={() => fileInputRef.current.click()}
-                                    >
-                                        {formData.imageFile ? (
-                                            <img
-                                                src={URL.createObjectURL(formData.imageFile)}
-                                                alt="Vista previa"
-                                                className="image-preview"
-                                            />
-                                        ) : (
-                                            <span>Arrastra una imagen aquí o haz clic</span>
-                                        )}
-                                    </div>
+  const handleDrop = (e) => {
+    e.preventDefault();
+    const file = e.dataTransfer.files[0];
+    if (file && file.type.startsWith("image/")) {
+      setValue("imageFile", file);
+      setValue("publicId", "");
+    }
+  };
 
-                                    <input
-                                        type="file"
-                                        accept="image/*"
-                                        ref={fileInputRef}
-                                        style={{ display: "none" }}
-                                        onChange={(e) => {
-                                            const file = e.target.files[0];
-                                            if (file && file.type.startsWith("image/")) {
-                                                setFormData((prev) => ({
-                                                    ...prev,
-                                                    imageFile: file,
-                                                    publicId: "",
-                                                }));
-                                            }
-                                        }}
-                                    />
-                                </>
-                            )}
-                        </label><br></br>
-                        <label>
-                            Nombre común:
-                            <input
-                                type="text"
-                                name="commonName"
-                                value={formData.commonName}
-                                onChange={handleChange}
-                            />
-                        </label>
-                        <label>
-                            Nombre científico:
-                            <input
-                                type="text"
-                                name="scientificName"
-                                value={formData.scientificName}
-                                onChange={handleChange}
-                            /><br></br>
-                        </label>
-                        <label>
-                            Familia:
-                            <input
-                                type="text"
-                                name="family"
-                                value={formData.family}
-                                onChange={handleChange}
-                            />
-                        </label>
-                        <label>
-                            Region:
-                            <input
-                                type="text"
-                                name="region"
-                                value={formData.region}
-                                onChange={handleChange}
-                            />
-                        </label>
-                        <label>
-                            Localización específica:
-                            <input
-                                type="text"
-                                name="specificLocation"
-                                value={formData.specificLocation}
-                                onChange={handleChange}
-                            />
-                        </label>
-                        <label>
-                            Hábitat:
-                            <input
-                                type="text"
-                                name="habitat"
-                                value={formData.habitat}
-                                onChange={handleChange}
-                            />
-                        </label>
-                        <label>
-                            Envergadura de las alas (cm):
-                            <input
-                                type="text"
-                                name="wingspan"
-                                value={formData.wingspan}
-                                onChange={handleChange}
-                            />
-                        </label>
-                        <label>
-                            Descripción:
-                            <input
-                                type="text"
-                                name="description"
-                                value={formData.description}
-                                onChange={handleChange}
-                            />
-                        </label>
-                        <label>
-                            Estado de conservación:
-                            <input
-                                type="text"
-                                name="conservationStatus"
-                                value={formData.conservationStatus}
-                                onChange={handleChange}
-                            />
-                        </label>
-                        <label>
-                            Nivel de amenaza:
-                            <input
-                                type="text"
-                                name="threatLevel"
-                                value={formData.threatLevel}
-                                onChange={handleChange}
-                            />
-                        </label>
-                        <label>
-                            Población:
-                            <input
-                                type="text"
-                                name="population"
-                                value={formData.population}
-                                onChange={handleChange}
-                            />
-                        </label>
-                        <label>
-                            Temporada de vuelo:
-                            <input
-                                type="text"
-                                name="flightSeason"
-                                value={formData.flightSeason}
-                                onChange={handleChange}
-                            />
-                        </label>
-                        <label>
-                            Plantas anfitrionas:
-                            <input
-                                type="text"
-                                name="hostPlants"
-                                value={formData.hostPlants}
-                                onChange={handleChange}
-                            />
-                        </label>
-                        <label>
-                            Fuentes de néctar:
-                            <input
-                                type="text"
-                                name="nectarSources"
-                                value={formData.nectarSources}
-                                onChange={handleChange}
-                            />
-                        </label>
-                        <label>
-                            Comportamiento:
-                            <input
-                                type="text"
-                                name="behavior"
-                                value={formData.behavior}
-                                onChange={handleChange}
-                            />
-                        </label>
-                        <label>
-                            Latitud:
-                            <input
-                                type="text"
-                                name="coordinates.latitude"
-                                value={formData.coordinates.latitude}
-                                onChange={handleChange}
-                            />
-                        </label>
-                        <label>
-                            Longitud:
-                            <input
-                                type="text"
-                                name="coordinates.longitude"
-                                value={formData.coordinates.longitude}
-                                onChange={handleChange}
-                            />
-                        </label>
-                        <label>
-                            Color:
-                            <input
-                                type="text"
-                                name="colorPrimary"
-                                value={formData.colorPrimary}
-                                onChange={handleChange}
-                            />
-                        </label>
-                        <label>
-                            Etiquetas:
-                            <input
-                                type="text"
-                                name="tags"
-                                value={formData.tags}
-                                onChange={handleChange}
-                            />
-                        </label>
+  const currentImage = watch("imageFile")
+    ? URL.createObjectURL(watch("imageFile"))
+    : watch("publicId");
 
-                    </div>
-                    <button type="submit">Guardar mariposa</button>
-                </form>
-            </div>
-        </div>
-    )
-}
+  return (
+    <div className="form-container">
+      <div className="form-card">
+        <h1>Agregar nueva Mariposa</h1>
+        <p>Documenta un nuevo avistamiento</p>
+        <form onSubmit={handleSubmit(onSubmit)}>
+          <div className="form-grid">
+            <label className="image-field">
+              Fotografía:
+              <div className="image-toggle-buttons">
+                <button
+                  type="button"
+                  className={imageInputType === "file" ? "active" : ""}
+                  onClick={() => setImageInputType("file")}
+                >
+                  Subir imagen
+                </button>
+                <button
+                  type="button"
+                  className={imageInputType === "url" ? "active" : ""}
+                  onClick={() => setImageInputType("url")}
+                >
+                  URL
+                </button>
+              </div>
+
+              {imageInputType === "url" && (
+                <>
+                  <input
+                    type="text"
+                    placeholder="Pega una URL de imagen"
+                    {...register("publicId")}
+                    onChange={(e) => {
+                      setValue("publicId", e.target.value);
+                      setValue("imageFile", null);
+                    }}
+                    className="image-url-input"
+                  />
+                </>
+              )}
+
+              {imageInputType === "file" && (
+                <>
+                  <div
+                    className="drop-area"
+                    onDrop={handleDrop}
+                    onDragOver={(e) => e.preventDefault()}
+                    onClick={() => fileInputRef.current.click()}
+                  >
+                    {currentImage ? (
+                      <img src={currentImage} alt="Vista previa" className="image-preview" />
+                    ) : (
+                      <span>Arrastra una imagen aquí o haz clic</span>
+                    )}
+                  </div>
+                  <input
+                    type="file"
+                    accept="image/*"
+                    ref={fileInputRef}
+                    style={{ display: "none" }}
+                    onChange={handleFileSelect}
+                  />
+                </>
+              )}
+            </label><bri></bri>
+
+            <label>
+              Nombre común:
+              <input type="text" {...register("commonName", { required: true })} />
+            </label>
+
+            <label>
+              Nombre científico:
+              <input type="text" {...register("scientificName", { required: true})} />
+            </label>
+
+            <label>
+              Familia:
+              <input type="text" {...register("family", { required: true})} />
+            </label>
+
+            <label>
+              Región:
+              <input type="text" {...register("region", { required: true})} />
+            </label>
+
+            <label>
+              Localización específica:
+              <input type="text" {...register("specificLocation")} />
+            </label>
+
+            <label>
+              Hábitat:
+              <input type="text" {...register("habitat")} />
+            </label>
+
+            <label>
+              Envergadura (cm):
+              <input type="text" {...register("wingspan")} />
+            </label>
+
+            <label>
+              Descripción:
+              <input type="text" {...register("description")} />
+            </label>
+
+            <label>
+              Estado de conservación:
+              <input type="text" {...register("conservationStatus")} />
+            </label>
+
+            <label>
+              Nivel de amenaza:
+              <input type="text" {...register("threatLevel")} />
+            </label>
+
+            <label>
+              Población:
+              <input type="text" {...register("population")} />
+            </label>
+
+            <label>
+              Temporada de vuelo:
+              <input type="text" {...register("flightSeason")} />
+            </label>
+
+            <label>
+              Plantas anfitrionas:
+              <input type="text" {...register("hostPlants")} />
+            </label>
+
+            <label>
+              Fuentes de néctar:
+              <input type="text" {...register("nectarSources")} />
+            </label>
+
+            <label>
+              Comportamiento:
+              <input type="text" {...register("behavior")} />
+            </label>
+
+            <label>
+              Latitud:
+              <input type="text" {...register("coordinates.latitude")} />
+            </label>
+
+            <label>
+              Longitud:
+              <input type="text" {...register("coordinates.longitude")} />
+            </label>
+
+            <label>
+              Color principal:
+              <input type="text" {...register("colorPrimary")} />
+            </label>
+
+            <label>
+              Etiquetas:
+              <input type="text" {...register("tags")} />
+            </label>
+          </div>
+
+          <button type="submit">Guardar mariposa</button>
+        </form>
+      </div>
+    </div>
+  );
+};
 
 export default FormCreate;
