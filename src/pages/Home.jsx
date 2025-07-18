@@ -1,10 +1,11 @@
-import TestServices from '../services/TestServices';
+import Layout from '../layout/Layout';
 
 function Home() {
 
     return (
         <>
-        <TestServices />
+        <Layout/>
+    
         </>
     )
 }
