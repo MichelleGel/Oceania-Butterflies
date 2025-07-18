@@ -77,17 +77,17 @@ const FormCreate = () => {
                   className={imageInputType === "file" ? "active" : ""}
                   onClick={() => setImageInputType("file")}
                 >
-                  Subir imagen
+                  📸 Subir imagen
                 </button>
                 <button
                   type="button"
                   className={imageInputType === "url" ? "active" : ""}
                   onClick={() => setImageInputType("url")}
                 >
-                  URL
+                  🔗 URL
                 </button>
               </div>
-
+                <div className="image-input-container">
               {imageInputType === "url" && (
                 <>
                   <input
@@ -106,7 +106,7 @@ const FormCreate = () => {
               {imageInputType === "file" && (
                 <>
                   <div
-                    className="drop-area"
+                    className="drop-area green-border"
                     onDrop={handleDrop}
                     onDragOver={(e) => e.preventDefault()}
                     onClick={() => fileInputRef.current.click()}
@@ -114,7 +114,7 @@ const FormCreate = () => {
                     {currentImage ? (
                       <img src={currentImage} alt="Vista previa" className="image-preview" />
                     ) : (
-                      <span>Arrastra una imagen aquí o haz clic</span>
+                      <span>📸<br/>Arrastra una imagen aquí o haz clic</span>
                     )}
                   </div>
                   <input
@@ -126,15 +126,16 @@ const FormCreate = () => {
                   />
                 </>
               )}
-            </label><bri></bri>
+              </div>
+            </label>
 
             <label>
-              Nombre común:
+              <span className="required-label">Nombre común:</span>
               <input type="text" {...register("commonName", { required: true })} />
             </label>
 
             <label>
-              Nombre científico:
+              <span className="required-label">Nombre científico:</span>
               <input type="text" {...register("scientificName", { required: true})} />
             </label>
 
