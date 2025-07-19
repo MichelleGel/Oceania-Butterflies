@@ -38,7 +38,7 @@ const TagsInput = ({ value, onChange }) => {
         value={input}
         onChange={(e) => setInput(e.target.value)}
         onKeyDown={handleKeyDown}
-        placeholder="Añade una etiqueta y presiona Enter"
+        placeholder="Añade..."
         className="tag-input"
       />
     </div>
