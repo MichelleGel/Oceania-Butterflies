@@ -1,48 +1,55 @@
 import React, { useState, useRef, useEffect } from "react";
 import { useForm } from "react-hook-form";
-import "./FormCreate.css";
-import TagsInput from "../components/TagsInput/TagsInput.jsx";
+import "./FormButterfly.css";
+import TagsInput from "./TagsInput/TagsInput.jsx";
 import "../components/TagsInput/TagsInput.css";
 import Button from "./Button.jsx";
 
 
-const FormCreate = () => {
+const FormButterfly = ({ initialData = {}, onSubmit, mode = "create" }) => {
     const fileInputRef = useRef(null);
     const [imageInputType, setImageInputType] = useState("url"); // Controla si se usa URL o subida de imagen
 
-    const { //Hook para mejorar el formulario (UseForm)
-        register, //registra los campos
-        handleSubmit,//maneja el envío del forulario
-        setValue,//establecevalores manualmente
-        watch,//observa valores en tiepo real
-        formState: { errors }, //errores de validación
+    const {
+        register,
+        handleSubmit,
+        setValue,
+        watch,
+        //reset,
+        formState: { errors },
     } = useForm({
         defaultValues: {
-            commonName: "",
-            scientificName: "",
-            family: "",
-            region: "",
-            specificLocation: "",
-            habitat: "",
-            wingspan: "",
-            description: "",
-            conservationStatus: "",
-            threatLevel: "",
-            population: "",
-            flightSeason: "",
-            hostPlants: "",
-            nectarSources: "",
-            behavior: "",
-            coordinates: { latitude: "", longitude: "" },
-            colorPrimary: "",
-            tags: [],
-            publicId: "",
-            imageFile: null,
-        },
+            ...initialData,
+            tags: initialData.tags || [],
+        }
     });
+    //Libera el objeto cuando ya no se usa
+
+
+    const imageFile = watch("imageFile");
+    const publicId = watch("publicId");
+
+    const [imagePreview, setImagePreview] = useState(null);
+
+    useEffect(() => {
+        if (imageFile && imageFile instanceof File) {
+            const url = URL.createObjectURL(imageFile);
+            setImagePreview(url);
+            return () => URL.revokeObjectURL(url);
+        } else {
+            setImagePreview(null);
+        }
+    }, [imageFile]);
+
+    const currentImage = imagePreview || publicId;
+
+    const tagsValue = watch("tags") || [];
+
+
     //función que se ejecuta al eviar el forulario
-    const onSubmit = (data) => {
+    const handleFormSubmit = (data) => {
         console.log("Datos enviados:", data);
+        onSubmit?.(data);
     };
     //aneja la selección manual de un archivo
     const handleFileSelect = (e) => {
@@ -61,17 +68,17 @@ const FormCreate = () => {
             setValue("publicId", "");
         }
     };
-    //imagen actual 
-    const currentImage = watch("imageFile")
-        ? URL.createObjectURL(watch("imageFile"))
-        : watch("publicId");
+
+
+
 
     return (
         <div className="form-container">
             <div className="form-card">
-                <h1>Agregar nueva Mariposa</h1>
-                <h2>Documenta un nuevo avistamiento</h2>
-                <form onSubmit={handleSubmit(onSubmit)}>
+                <h1>{mode === "edit" ? "Editar Mariposa" : "Agregar nueva Mariposa"}</h1>
+                <h2>{mode === "edit" ? "Modifica la información existente" : "Documenta un nuevo avistamiento"}</h2>
+
+                <form onSubmit={handleSubmit(handleFormSubmit)}>
                     <div className="form-grid">
                         <label className="image-field">
                             Fotografía:
@@ -133,117 +140,128 @@ const FormCreate = () => {
                             </div>
                         </label>
 
-                        <label>
+                        <label htmlFor="commonName">
                             <span className="required-label">Nombre común:</span>
-                            <input type="text" {...register("commonName", { required: true })} />
+                            <input id="commonName" type="text" autoComplete="off" {...register("commonName", { required: "Este campo es obligatorio" })} />
+                            {errors.commonName && <p className="error-message">{errors.commonName.message}</p>}
                         </label>
 
-                        <label>
+                        <label htmlFor="scientificName">
                             <span className="required-label">Nombre científico:</span>
-                            <input type="text" {...register("scientificName", { required: true })} />
+                            <input id="scientificName" type="text" autoComplete="off" {...register("scientificName", { required: "Este campo es  obligatorio" })} />
+                            {errors.scientificName && <p className="error-message">{errors.scientificName.message}</p>}
                         </label>
 
-                        <label>
+                        <label htmlFor="family">
                             Familia:
-                            <input type="text" {...register("family", { required: true })} />
+                            <input id="family" type="text" autoComplete="off" {...register("family", { required: "Este campo es obligatorio" })} />
+                            {errors.family && <p className="error-message">{errors.family.message}</p>}
                         </label>
 
-                        <label>
+                        <label htmlFor="region">
                             <span className="required-label">Región:</span>
-                            <select type="text" {...register("region", { required: true })}>
+                            <select id="region" type="text" autoComplete="off" {...register("region", { required: "Estecampo es obligatorio" })}>
                                 <option value="">Selecciona una región</option>
                                 <option value="Australia">Australia</option>
                                 <option value="Nueva Zelanda">Nueva Zelanda</option>
                                 <option value="Islas del Pacífico">Islas del Pacífico</option>
                             </select>
+                            {errors.region && <p className="error-message">{errors.region.message}</p>}
                         </label>
-                        <label>
+                        <label htmlFor="specificLocation">
                             Localización específica:
-                            <input type="text" {...register("specificLocation")} />
+                            <input id="specificLocation" type="text" autoComplete="off" {...register("specificLocation")} />
                         </label>
 
-                        <label>
+                        <label htmlFor="habitat">
                             Hábitat:
-                            <input type="text" {...register("habitat")} />
+                            <input id="habitat" type="text" autoComplete="off" {...register("habitat")} />
                         </label>
 
-                        <label>
+                        <label htmlFor="wingspan">
                             Envergadura (cm):
-                            <input type="text" {...register("wingspan")} />
+                            <input id="wingspan" type="text" autoComplete="off" {...register("wingspan")} />
                         </label>
 
-                        <label>
+                        <label htmlFor="description">
                             Descripción:
-                            <input type="text" {...register("description")} />
+                            <input id="description" type="text" autoComplete="off" {...register("description")} />
                         </label>
 
-                        <label>
+                        <label htmlFor="conservationStatus">
                             Estado de conservación:
-                            <input type="text" {...register("conservationStatus")} />
+                            <input id="conservationStatus" type="text" autoComplete="off" {...register("conservationStatus")} />
                         </label>
 
-                        <label>
+                        <label htmlFor="threatLevel">
                             <span className="required-label">Nivel de amenaza:</span>
-                            <select {...register("threatLevel", { required: true })}>
+                            <select id="threatLevel" autoComplete="off" {...register("threatLevel", { required: "Este campo es obligatorio" })}>
                                 <option value="">Selecciona nivel de amenaza</option>
                                 <option value="vulnerable">Vulnerable</option>
                                 <option value="preocupación menor">Preocupación menor</option>
                                 <option value="en peligro crítico">En peligro crítico</option>
                             </select>
+                            {errors.threatLevel && <p className="error-message">{errors.threatLevel.message}</p>}
                         </label>
 
-                        <label>
+                        <label htmlFor="population">
                             Población:
-                            <input type="text" {...register("population")} />
+                            <input id="population" type="text" autoComplete="off" {...register("population")} />
                         </label>
 
-                        <label>
+                        <label htmlFor="flightSeason">
                             Temporada de vuelo:
-                            <input type="text" {...register("flightSeason")} />
+                            <input id="flightSeason" type="text" autoComplete="off" {...register("flightSeason")} />
                         </label>
 
-                        <label>
+                        <label htmlFor="hostPlants">
                             Plantas anfitrionas:
-                            <input type="text" {...register("hostPlants")} />
+                            <input id="hostPlants" type="text" autoComplete="off" {...register("hostPlants")} />
                         </label>
 
-                        <label>
+                        <label htmlFor="nectarSources">
                             Fuentes de néctar:
-                            <input type="text" {...register("nectarSources")} />
+                            <input id="nectarSources" type="text" autoComplete="off" {...register("nectarSources")} />
                         </label>
 
-                        <label>
+                        <label htmlFor="behavior">
                             Comportamiento:
-                            <input type="text" {...register("behavior")} />
+                            <input id="behavior" type="text" autoComplete="off" {...register("behavior")} />
                         </label>
 
-                        <label>
+                        <label htmlFor="coordinates-latitude">
                             Latitud:
-                            <input type="text" {...register("coordinates.latitude")} />
+                            <input id="coordinates-latitude" type="text" autoComplete="off" {...register("coordinates.latitude")} />
                         </label>
 
-                        <label>
+                        <label htmlFor="coordinates-longitude">
                             Longitud:
-                            <input type="text" {...register("coordinates.longitude")} />
+                            <input id="coordinates-longitude" type="text" autoComplete="off" {...register("coordinates.longitude")} />
                         </label>
 
-                        <label>
+                        <label htmlFor="colorPrimary">
                             Color principal:
-                            <input type="text" {...register("colorPrimary")} />
+                            <input id="colorPrimary" type="text" autoComplete="off" {...register("colorPrimary")} />
                         </label>
 
-                        <label>
+                        <label id="tags-label">
                             Etiquetas:
-                            <TagsInput value={watch("tags")}
-                                onChange={(newTags) => setValue("tags", newTags)} />
+                            <TagsInput aria-labelledby="tags-label" autoComplete="off"
+                                value={tagsValue}
+                                onChange={(newTags) => setValue("tags", newTags, { shouldValidate: true, shouldDirty: true })}
+                            />
+
                         </label>
                     </div>
 
-                    <Button type="submit" title="Guardar mariposa"/>
+                    <Button type="submit" title="Guardar">
+                        {mode === "edit" ? "Actualizar mariposa" : "Guardar mariposa"}
+                    </Button>
+                    
                 </form>
             </div>
         </div>
     );
 };
 
-export default FormCreate;
+export default FormButterfly;

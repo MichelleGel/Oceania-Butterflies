@@ -1,11 +1,12 @@
-import FormCreate from '../components/FormCreate';
+import FormButterfly from "../components/FormButterfly";
 
 const CreateButterfly = () => {
-    return (
-        <div>
-            <h1>Formulario crear Mariposa</h1>
-            <FormCreate />
-        </div>
-    );
+    const handleCreate = (data) => {
+        console.log("Mariposa creada:", data);
+        // Aquí puedes enviar los datos a tu API o backend
+    };
+
+    return <FormButterfly onSubmit={handleCreate} mode="create" />;
 };
+
 export default CreateButterfly;

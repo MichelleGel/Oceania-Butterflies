@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import "./TagsInput.css";
 
-const TagsInput = ({ value, onChange }) => {
+const TagsInput = ({ value = [], onChange }) => {
   const [input, setInput] = useState("");
 // Añade etiqueta si es válida y no está repetida
   const addTag = () => {
@@ -33,7 +33,7 @@ const TagsInput = ({ value, onChange }) => {
           </span>
         ))}
       </div>
-      <input
+      <input name="tagsInput"
         type="text"
         value={input}
         onChange={(e) => setInput(e.target.value)}
