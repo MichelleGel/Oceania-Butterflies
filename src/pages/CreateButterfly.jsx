@@ -1,10 +1,11 @@
-
-const CreateButterfly =()=>{
+import FormCreate from '../components/FormCreate';
+import CreateButterfly from '../components/FormCreate';
+const FormPage = () => {
     return (
-        <>
-            <p>Hola estoy en new butterfly</p>
-        </>
-    )
-}
-
-export default CreateButterfly
+        <div>
+            <h1>Formulario crear Mariposa</h1>
+            <CreateButterfly />
+        </div>
+    );
+};
+export default FormCreate;
