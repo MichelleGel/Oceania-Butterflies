@@ -3,7 +3,7 @@ import ButterflyCard from "../components/ButterflyCard"; //Importamos el compone
 import "./list.css"; //Importamos el CSS que le da estilo a esta página en particular
 import ButterflyData from "/server/butterfly.json"; //Importamos nuestra base de datos.
 import SearchBar from "../components/SearchBar"; //Importamos el componente de SearchBar
-import Map from "../components/Map"; // 👈 1. IMPORTA TU NUEVO COMPONENTE
+import Map from "../components/Map"; //  Importamos el componente de Mapa
 
 const List = () => {
   const [searchTerm, setSearchTerm] = useState(""); //Con el useState vamos a guardar el texto de busqueda, lo inicializamos vacio.
