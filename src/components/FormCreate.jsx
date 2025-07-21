@@ -3,6 +3,7 @@ import { useForm } from "react-hook-form";
 import "./FormCreate.css";
 import TagsInput from "../components/TagsInput/TagsInput.jsx";
 import "../components/TagsInput/TagsInput.css";
+import Button from "./Button.jsx";
 
 
 const FormCreate = () => {
@@ -238,7 +239,7 @@ const FormCreate = () => {
                         </label>
                     </div>
 
-                    <button type="submit">Guardar mariposa</button>
+                    <Button type="submit" title="Guardar mariposa"/>
                 </form>
             </div>
         </div>
