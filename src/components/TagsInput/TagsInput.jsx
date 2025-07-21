@@ -33,7 +33,7 @@ const TagsInput = ({ value = [], onChange }) => {
           </span>
         ))}
       </div>
-      <input
+      <input name="tagsInput"
         type="text"
         value={input}
         onChange={(e) => setInput(e.target.value)}
