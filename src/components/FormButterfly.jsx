@@ -1,47 +1,37 @@
 import React, { useState, useRef, useEffect } from "react";
 import { useForm } from "react-hook-form";
-import "./FormCreate.css";
-import TagsInput from "../components/TagsInput/TagsInput.jsx";
+import "./FormButterfly.css";
+import TagsInput from "./TagsInput/TagsInput.jsx";
 import "../components/TagsInput/TagsInput.css";
 
 
-const FormCreate = () => {
+const FormButterfly = ({ initialData = {}, onSubmit, mode = "create" }) => {
     const fileInputRef = useRef(null);
     const [imageInputType, setImageInputType] = useState("url"); // Controla si se usa URL o subida de imagen
 
-    const { //Hook para mejorar el formulario (UseForm)
-        register, //registra los campos
-        handleSubmit,//maneja el envío del forulario
-        setValue,//establecevalores manualmente
-        watch,//observa valores en tiepo real
-        formState: { errors }, //errores de validación
+    const {
+        register,
+        handleSubmit,
+        setValue,
+        watch,
+        reset,
+        formState: { errors },
     } = useForm({
-        defaultValues: {
-            commonName: "",
-            scientificName: "",
-            family: "",
-            region: "",
-            specificLocation: "",
-            habitat: "",
-            wingspan: "",
-            description: "",
-            conservationStatus: "",
-            threatLevel: "",
-            population: "",
-            flightSeason: "",
-            hostPlants: "",
-            nectarSources: "",
-            behavior: "",
-            coordinates: { latitude: "", longitude: "" },
-            colorPrimary: "",
-            tags: [],
-            publicId: "",
-            imageFile: null,
-        },
+        defaultValues: initialData,
     });
+
+    // Registrar "tags"
+    useEffect(() => {
+        register("tags");
+    }, [register]);
+
+    const tagsValue = watch("tags") || [];
+
+
     //función que se ejecuta al eviar el forulario
-    const onSubmit = (data) => {
+    const handleFormSubmit = (data) => {
         console.log("Datos enviados:", data);
+        onSubmit?.(data);
     };
     //aneja la selección manual de un archivo
     const handleFileSelect = (e) => {
@@ -68,9 +58,10 @@ const FormCreate = () => {
     return (
         <div className="form-container">
             <div className="form-card">
-                <h1>Agregar nueva Mariposa</h1>
-                <h2>Documenta un nuevo avistamiento</h2>
-                <form onSubmit={handleSubmit(onSubmit)}>
+                <h1>{mode === "edit" ? "Editar Mariposa" : "Agregar nueva Mariposa"}</h1>
+                <h2>{mode === "edit" ? "Modifica la información existente" : "Documenta un nuevo avistamiento"}</h2>
+
+                <form onSubmit={handleSubmit(handleFormSubmit)}>
                     <div className="form-grid">
                         <label className="image-field">
                             Fotografía:
@@ -233,16 +224,21 @@ const FormCreate = () => {
 
                         <label>
                             Etiquetas:
-                            <TagsInput value={watch("tags")}
-                            onChange={(newTags) => setValue("tags", newTags)}/>
+                            <TagsInput
+                                value={tagsValue}
+                                onChange={(newTags) => setValue("tags", newTags, { shouldValidate: true, shouldDirty: true })}
+                            />
+
                         </label>
                     </div>
 
-                    <button type="submit">Guardar mariposa</button>
+                    <button type="submit">
+                        {mode === "edit" ? "Actualizar mariposa" : "Guardar mariposa"}
+                    </button>
                 </form>
             </div>
         </div>
     );
 };
 
-export default FormCreate;
+export default FormButterfly;
