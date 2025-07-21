@@ -1,5 +1,6 @@
 import "./ButterflyCard.css";
 import Button from "./Button";
+
 // --- CONFIGURACIÓN DE CLOUDINARY ---
 // ¡IMPORTANTE! Reemplaza 'tu-cloud-name-aqui' con tu Cloud Name real.
 const CLOUD_NAME = "da3higfux";
