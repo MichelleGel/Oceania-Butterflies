@@ -35,10 +35,10 @@ function Navbar() {
         </button>
 
      <ul className={`navbar-links ${isMenuOpen ? "menu-open" : ""}`} aria-expanded={isMenuOpen}>
-  <li><Link to="/" className={getLinkClass("/")}>Quiénes Somos</Link></li>
-  <li><Link to="/galeria" className={getLinkClass("/galeria")}>Explora</Link></li>
-  <li><Link to="/añadir" className={getLinkClass("/añadir")}>Añadir Mariposa</Link></li>
-  <li><Link to="/buscador" className={getLinkClass("/buscador")}>Registro</Link></li>
+  <li><Link to="/contactcreators" className={getLinkClass("/")}>Quiénes Somos</Link></li>
+  <li><Link to="/butterflylist" className={getLinkClass("/explora")}>Explora</Link></li>
+  <li><Link to="/newbutterfly" className={getLinkClass("/añadir")}>Añadir Mariposa</Link></li>
+  <li><Link to="/registro" className={getLinkClass("/registro")}>Registro</Link></li>
 </ul>
       </div>
     </nav>
