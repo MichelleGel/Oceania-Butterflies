@@ -1,4 +1,5 @@
 import './ButterflyDetail.css'
+
 const ButterflyDetail = () => {
   return (
     <>

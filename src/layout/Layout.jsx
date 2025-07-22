@@ -4,7 +4,6 @@ import Footer from "../components/Footer"
 import ButterflyCard from "../components/ButterflyCard"
 import butterfliesData from '../../server/butterfly.json';
 import List from "../pages/List";
-import ButterflyDetail from "../pages/ButterflyDetail";
 
 const Layout = () => {
     return (
@@ -12,7 +11,6 @@ const Layout = () => {
             <NavBar />
             <Outlet />
             <Footer />
-            <ButterflyDetail/>
         </>
     )
 }
