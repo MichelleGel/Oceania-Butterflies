@@ -6,7 +6,7 @@ import "../components/TagsInput/TagsInput.css";
 import Button from "./Button.jsx";
 
 
-const FormButterfly = ({ initialData = {}, onSubmit, mode = "create" }) => {
+const FormButterfly = ({ initialData = {}, onSubmit,onCancel, mode = "create" }) => {
     const fileInputRef = useRef(null);
     const [imageInputType, setImageInputType] = useState("url"); // Controla si se usa URL o subida de imagen
 
@@ -257,6 +257,9 @@ const FormButterfly = ({ initialData = {}, onSubmit, mode = "create" }) => {
                     <Button type="submit" title="Guardar">
                         {mode === "edit" ? "Actualizar mariposa" : "Guardar mariposa"}
                     </Button>
+                    {mode === "edit" && (
+                        <Button type="button" title="Cancelar" action={()=> onCancel?.()}>Cancelar</Button>
+                    )}
                     
                 </form>
             </div>

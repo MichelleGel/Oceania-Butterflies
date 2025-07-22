@@ -2,6 +2,11 @@ import "./ButterflyCard.css";
 import Button from "./Button";
 import { getOneButterfly, deleteButterfly, updateButterfly } from '../services/ButterflyServices';
 import Swal from 'sweetalert2';
+import { useState } from 'react';
+import FormButterfly from "./FormButterfly";
+//import { set } from "react-hook-form";
+import { useNavigate } from "react-router-dom";
+
 
 // --- CONFIGURACIÓN DE CLOUDINARY ---
 // ¡IMPORTANTE! Reemplaza 'tu-cloud-name-aqui' con tu Cloud Name real.
@@ -16,9 +21,13 @@ const TRANSFORMATIONS =
 // --- DEFINICIÓN DEL COMPONENTE ---
 // Este es nuestro componente. Recibe un objeto "butterfly" con todos los datos.
 const ButterflyCard = ({ butterfly }) => {
+const navigate = useNavigate();
 
   // Construimos la URL completa de la imagen en Cloudinary
   const imageUrl = `${CLOUDINARY_URL_BASE}/${TRANSFORMATIONS}/${butterfly.publicId}.png`;
+
+//estado para controlar si se esta editando
+const [isEditing, setIsEditing] = useState(false);
 
   // Esto es lo que el componente mostrará en pantalla (es JSX, parece HTML).
   return (
@@ -32,8 +41,8 @@ const ButterflyCard = ({ butterfly }) => {
       <Button
         tooltip="Actualizar Información Mariposa"
         title="Editar"
-        action={async () =>//aqui debo meter el formulario de edición
-        updateButterfly(butterfly.id)}
+        action={async () => navigate(`/editbutterfly:${butterfly.id}`)}//aqui debo meter el formulario de edición
+        //updateButterfly(butterfly.id)}
       />
 
       <Button
@@ -58,9 +67,30 @@ const ButterflyCard = ({ butterfly }) => {
         }}
       />
 
+      {isEditing && (
+  <FormButterfly
+    initialData={butterfly}
+    mode="edit"
+    onSubmit={async (updatedData) => {
+      try {
+        await updateButterfly(butterfly.id, updatedData);
+        Swal.fire('Mariposa actualizada correctamente.');
+        setIsEditing(false);
+        //window.location.reload(); // o actualiza el estado del padre si estás usando lifting state up
+      } catch (error) {
+        Swal.fire('Error al actualizar la mariposa', error.message, 'error');
+      }
+    }}
+    onCancel={()=>setIsEditing(false)}//se pasa la funcion para cancelar en caso de no querer editar.
+  />
+)}
+
     </div>
   );
 };
+
+
+
 
 // Esta línea permite que otros archivos usen nuestro componente.
 export default ButterflyCard;

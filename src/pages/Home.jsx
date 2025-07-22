@@ -7,9 +7,7 @@ function Home() {
 
     return (
         <>
-        <Layout/>
         <CreateButterfly/>
-        <EditButterfly/>
         </>
     )
 }
