@@ -1,7 +1,6 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import ButterflyCard from "../components/ButterflyCard"; //Importamos el componente ButterflyCard y que contiene las tarjetas.
 import "./list.css"; //Importamos el CSS que le da estilo a esta página en particular
-import ButterflyData from "/server/butterfly.json"; //Importamos nuestra base de datos.
 import SearchBar from "../components/SearchBar"; //Importamos el componente de SearchBar
 import Map from "../components/Map"; //  Importamos el componente de Mapa
 
@@ -9,6 +8,28 @@ const List = () => {
   const [searchTerm, setSearchTerm] = useState(""); //Con el useState vamos a guardar el texto de busqueda, lo inicializamos vacio.
   const [selectedRegion, setSelectedRegion] = useState("Todas"); //Este es para la Region lo iniciamos en Todas para que se vean todas desde el inicio.
   const [selectedThreat, setSelectedThreat] = useState("Todas");
+
+useEffect(() => {
+ const ButterflyData=getAllButterflies()
+
+
+},[])
+
+
+//  useEffect(() => {
+//     const fetchData = async () => {
+//       try {
+//         const animalData = await getAnimals();
+//         setData(animalData);
+//       } catch (error) {
+//         console.error('Error:', error);
+//       }
+//     };
+
+//     fetchData();
+//   }, []);  //cuando se monta, se ejecuta
+
+
 
   const handleClearFilters = () => {
     setSearchTerm("");
