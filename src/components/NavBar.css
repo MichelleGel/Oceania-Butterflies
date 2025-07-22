@@ -29,6 +29,7 @@
   align-items: center;
   text-decoration: none;
   gap: 0.5rem;
+  max-width: 70%;
 }
 
 .logo-mobile {
@@ -114,7 +115,7 @@
 /* FULLSCREEN BURGER MENU AND LOGOTYPE (responsive) */
 
 
-@media (max-width: 768px) {
+@media (max-width: 1024px) { /*pixeles para que sea responsive antes de romperse el estilo del nav 
   .logo-desktop,
   .logo-text {
     display: none; /* Oculta el texto en móvil */
@@ -168,7 +169,7 @@
     color: white;
     font-size: 1rem;
     position: absolute;
-    top: 0,5rem;
+    top: 0.5rem;
     right: 1.5rem;
     z-index: 1201;
     cursor: pointer;

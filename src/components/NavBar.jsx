@@ -6,10 +6,21 @@ import "./Navbar.css";
 function Navbar() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const location = useLocation();
+  const [isScrolled, setIsScrolled] = useState(false);
 
+  //cierra el menu cuando cambia de ruta (de pagina)
   useEffect(() => {
     setIsMenuOpen(false);
   }, [location.pathname]);
+
+  //efecto de color solido en navbar al hacer scroll 
+  useEffect(() => {
+    const handleScroll = () => {
+      setIsScrolled(window.scrollY > 100);
+    };
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
 
   const handleToggleMenu = () => {
     setIsMenuOpen((prev) => !prev);
@@ -19,15 +30,6 @@ function Navbar() {
     return location.pathname === path ? "active-link nav-link" : "nav-link";
   };
 
-  const [isScrolled, setIsScrolled] = useState(false);
-
-  useEffect(() => {
-    const handleScroll = () => {
-      setIsScrolled(window.scrollY > 100);
-    };
-    window.addEventListener("scroll", handleScroll);
-    return () => window.removeEventListener("scroll", handleScroll);
-  }, []);
 
   return (
     <nav className={`navbar ${isScrolled ? "scrolled" : "transparent"}`}>
@@ -36,11 +38,10 @@ function Navbar() {
           {/* Logo para movil */}
           <img src="/logotipo-navbar.png" alt="Logo Móvil" className="logo-mobile" />
 
-          {/* Logo epara version escritorio que va antes del texto */}
+          {/* Logo para version escritorio que va antes del texto */}
           <img src="/logo-navbar.png" alt="Logo Desktop" className="logo-desktop" />
           <span className="logo-text">POLINIZADORAS | Mariposas Oceania</span>
         </Link>
-
 
 
         <button
@@ -51,7 +52,9 @@ function Navbar() {
           {isMenuOpen ? <FaTimes /> : <FaBars />}
         </button>
 
-        <ul className={`navbar-links ${isMenuOpen ? "menu-open" : ""}`} aria-expanded={isMenuOpen}>
+        <ul
+          className={`navbar-links ${isMenuOpen ? "menu-open" : ""}`} aria-expanded={isMenuOpen}
+        >
           <li><Link to="/contactcreators" className={getLinkClass("/")}>Quiénes Somos</Link></li>
           <li><Link to="/butterflylist" className={getLinkClass("/explora")}>Explora</Link></li>
           <li><Link to="/newbutterfly" className={getLinkClass("/añadir")}>Añadir Mariposa</Link></li>
