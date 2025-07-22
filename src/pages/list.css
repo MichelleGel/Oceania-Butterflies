@@ -1,4 +1,4 @@
-.butterfly-list-container{
+/* .butterfly-list-container{
     display: flex;
     flex-wrap: wrap;
     gap: 1.5vw;
@@ -18,4 +18,102 @@ background-color: #E0E6D8;
     height: 2vw;
     border-radius: 15px;
 
+} */
+
+/* --- ESTILOS GENERALES (Mobile First) --- */
+
+body {
+  margin: 0;
+  padding: 0;
+  background-color: #e0e6d8;
+  font-family: sans-serif; /* Es bueno definir una fuente base */
+}
+
+.listPage {
+  /* En móvil, usamos padding en lugar de margin para un mejor control */
+  padding: 20px 15px;
+}
+
+.listPage h1 {
+  font-size: 2rem; /* Tamaño de fuente más grande */
+}
+
+/* --- BARRA DE BÚSQUEDA --- */
+
+/* Hacemos que el contenedor de la barra sea flexible */
+.searchContainer {
+  display: flex;
+  flex-direction: column; /* En móvil, los elementos se apilan verticalmente */
+  gap: 15px; /* Espacio entre los grupos de filtros */
+}
+
+.searchBarinput {
+  width: 100%; /* El input ocupa todo el ancho */
+  padding: 12px;
+  font-size: 1rem;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+  box-sizing: border-box; /* Asegura que el padding no afecte el ancho total */
+}
+
+/* --- GRID DE TARJETAS --- */
+
+.butterfly-list-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px; /* Un espaciado fijo funciona mejor que vw */
+  margin-top: 30px;
+}
+
+/* Para que esto funcione, asegúrate de que tu componente ButterflyCard
+   tenga un div principal con la clase "card". */
+.card {
+  flex: 1 1 100%; /* Móvil: Cada tarjeta ocupa el 100% del ancho */
+  box-sizing: border-box;
+  /* (Aquí van los estilos de tu tarjeta: color de fondo, borde, etc.) */
+}
+
+/* --- MEDIA QUERY PARA TABLETS --- */
+
+@media (min-width: 768px) {
+  .listPage {
+    padding: 40px;
+  }
+
+  .searchContainer {
+    flex-direction: row; /* En tablet, volvemos a poner los filtros en fila */
+    align-items: center;
+    justify-content: space-between;
+  }
+  
+  .searchBarinput {
+    width: 300px; /* Le damos un ancho fijo */
+  }
+
+  .card {
+    /* Tablet: Cada tarjeta puede ocupar hasta un 48% del ancho,
+       permitiendo 2 tarjetas por fila. */
+    flex-basis: calc(50% - 10px);
+  }
+}
+
+
+/* --- MEDIA QUERY PARA ESCRITORIOS --- */
+
+@media (min-width: 1024px) {
+  .listPage {
+    padding: 40px 60px;
+  }
+
+  .card {
+    /* Escritorio: Permitimos 3 tarjetas por fila. */
+    flex-basis: calc(33.333% - 14px);
+  }
+}
+
+@media (min-width: 1440px) {
+  .card {
+    /* Escritorios grandes: Permitimos 4 tarjetas por fila. */
+    flex-basis: calc(25% - 15px);
+  }
 }
