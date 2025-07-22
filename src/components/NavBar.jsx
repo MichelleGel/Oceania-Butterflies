@@ -33,8 +33,15 @@ function Navbar() {
     <nav className={`navbar ${isScrolled ? "scrolled" : "transparent"}`}>
       <div className="navbar-container">
         <Link to="/" className="navbar-logo">
-          POLINIZADORAS | Mariposas Oceania
+          {/* Logo para movil */}
+          <img src="/logotipo-navbar.png" alt="Logo Móvil" className="logo-mobile" />
+
+          {/* Logo epara version escritorio que va antes del texto */}
+          <img src="/logo-navbar.png" alt="Logo Desktop" className="logo-desktop" />
+          <span className="logo-text">POLINIZADORAS | Mariposas Oceania</span>
         </Link>
+
+
 
         <button
           className="menu-button"

@@ -2,7 +2,6 @@ function Home() {
     return (
         <>
         {/* home */}
-        
         </>
     )
 }
