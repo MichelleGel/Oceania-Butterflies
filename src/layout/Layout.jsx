@@ -4,6 +4,7 @@ import Footer from "../components/Footer"
 import ButterflyCard from "../components/ButterflyCard"
 import butterfliesData from '../../server/butterfly.json';
 
+
 const Layout = () => {
     return (
         <>
