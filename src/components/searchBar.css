@@ -1,34 +1,44 @@
 .searchContainer {
   display: flex;
   justify-content:space-around; 
-  align-items: center;
+  align-items: left;
+  flex-direction: column;
+  
 }
 .threatButtons {
-  display: flex;
   gap: 10px;
+  align-items: left;
 }
 .threatContainer{
-  background-color: #B7B7A4;
   padding: 0.5%;
   border-radius: 5px;
-  align-items: center;
-  margin: aut;
+  align-items: left;
 }
 
 .threatTitle{
-text-align: center;
+text-align: left;
 margin: auto;
 }
 
 .regionContainer{
-  background-color: #B7B7A4;
   padding: 0.5%;
   border-radius: 5px;
   align-items: center;
-  margin: aut;
 }
 
 .regionButtons {
   display: flex;
   gap: 10px;
+}
+
+.filterOptions {
+  display: flex;
+  justify-content: space-around;
+  align-items: flex-start;
+  gap: 20px;
+}
+
+.allButton {
+  width: 10vw;
+  margin-top: 25px;
 }
