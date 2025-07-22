@@ -19,8 +19,18 @@ function Navbar() {
     return location.pathname === path ? "active-link nav-link" : "nav-link";
   };
 
+  const [isScrolled, setIsScrolled] = useState(false);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      setIsScrolled(window.scrollY > 100);
+    };
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
+
   return (
-    <nav className="navbar">
+    <nav className={`navbar ${isScrolled ? "scrolled" : "transparent"}`}>
       <div className="navbar-container">
         <Link to="/" className="navbar-logo">
           POLINIZADORAS | Mariposas Oceania
@@ -34,12 +44,12 @@ function Navbar() {
           {isMenuOpen ? <FaTimes /> : <FaBars />}
         </button>
 
-     <ul className={`navbar-links ${isMenuOpen ? "menu-open" : ""}`} aria-expanded={isMenuOpen}>
-  <li><Link to="/contactcreators" className={getLinkClass("/")}>Quiénes Somos</Link></li>
-  <li><Link to="/butterflylist" className={getLinkClass("/explora")}>Explora</Link></li>
-  <li><Link to="/newbutterfly" className={getLinkClass("/añadir")}>Añadir Mariposa</Link></li>
-  <li><Link to="/registro" className={getLinkClass("/registro")}>Registro</Link></li>
-</ul>
+        <ul className={`navbar-links ${isMenuOpen ? "menu-open" : ""}`} aria-expanded={isMenuOpen}>
+          <li><Link to="/contactcreators" className={getLinkClass("/")}>Quiénes Somos</Link></li>
+          <li><Link to="/butterflylist" className={getLinkClass("/explora")}>Explora</Link></li>
+          <li><Link to="/newbutterfly" className={getLinkClass("/añadir")}>Añadir Mariposa</Link></li>
+          <li><Link to="/registro" className={getLinkClass("/registro")}>Registro</Link></li>
+        </ul>
       </div>
     </nav>
   );
