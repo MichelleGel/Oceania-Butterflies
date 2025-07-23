@@ -98,12 +98,6 @@
   font-weight: 400;
 }
 
-/* Navbar transparente */
-.navbar.transparent {
-  background-color: transparent;
-  box-shadow: none;
-  transition: background-color 0.4s ease, box-shadow 0.4s ease;
-}
 
 /* Navbar con color al hacer scroll */
 .navbar.scrolled {
