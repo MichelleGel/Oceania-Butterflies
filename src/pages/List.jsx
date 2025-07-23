@@ -3,33 +3,50 @@ import ButterflyCard from "../components/ButterflyCard"; //Importamos el compone
 import "./list.css"; //Importamos el CSS que le da estilo a esta página en particular
 import SearchBar from "../components/SearchBar"; //Importamos el componente de SearchBar
 import Map from "../components/Map"; //  Importamos el componente de Mapa
+import { getAllButterflies } from "../services/ButterflyServices";
 
 const List = () => {
   const [searchTerm, setSearchTerm] = useState(""); //Con el useState vamos a guardar el texto de busqueda, lo inicializamos vacio.
   const [selectedRegion, setSelectedRegion] = useState("Todas"); //Este es para la Region lo iniciamos en Todas para que se vean todas desde el inicio.
   const [selectedThreat, setSelectedThreat] = useState("Todas");
+  const [butterflies, setButterflies] = useState([]);
+  // const [ButterflyData, setButterflyData] = useState([]);
 
-useEffect(() => {
- const ButterflyData=getAllButterflies()
+  useEffect(() => {
+    const fetchButterflyData = async () => {
+      try {
+        const bfData = await getAllButterflies();
+        setButterflies(bfData);
+        console.log("Mariposas: ", bfData)
+      } catch (error) {
+        console.error("Error:", error);
+      }
+    };
+    fetchButterflyData();
+  }, []);
 
+  //  useEffect(() => {
+  //     const fetchData = async () => {
+  //       try {
+  //         const animalData = await getAnimals();
+  //         setData(animalData);
+  //       } catch (error) {
+  //         console.error('Error:', error);
+  //       }
+  //     };
 
-},[])
+  //     fetchData();
+  //   }, []);  //cuando se monta, se ejecuta
 
-
-//  useEffect(() => {
-//     const fetchData = async () => {
-//       try {
-//         const animalData = await getAnimals();
-//         setData(animalData);
-//       } catch (error) {
-//         console.error('Error:', error);
-//       }
-//     };
-
-//     fetchData();
-//   }, []);  //cuando se monta, se ejecuta
-
-
+  // export const getAllButterflies = async() => {
+  //     try {
+  //         const res = await axios.get(URL_API);
+  //         return res.data;
+  //     }
+  //     catch(error) {
+  //         console.error(`getAllButterflies error:`, error.message);
+  //         throw error;
+  //     }
 
   const handleClearFilters = () => {
     setSearchTerm("");
@@ -38,7 +55,7 @@ useEffect(() => {
   };
   // Lógica de filtrado.
   //filteredButterflies va a guardar la lista de las mariposas dependiendo la filtración.
-  const filteredButterflies = ButterflyData.butterfly.filter((butterfly) => {
+  const filteredButterflies = butterflies.filter((butterfly) => {
     //filter() Es una función de JavaScript que crea una nueva lista solo con los elementos que cumplen una condición.
     // Filtro por región
     const regionMatch =
