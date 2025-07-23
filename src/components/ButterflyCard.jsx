@@ -10,7 +10,7 @@ import { useNavigate } from "react-router-dom";
 
 // --- CONFIGURACIÓN DE CLOUDINARY ---
 // ¡IMPORTANTE! Reemplaza 'tu-cloud-name-aqui' con tu Cloud Name real.
-import { useNavigate } from "react-router-dom";//Añadido por luisa
+
 const CLOUD_NAME = "da3higfux";
 const CLOUDINARY_URL_BASE = `https://res.cloudinary.com/${CLOUD_NAME}/image/upload`;
 
@@ -30,6 +30,10 @@ const navigate = useNavigate();
 //estado para controlar si se esta editando
 const [isEditing, setIsEditing] = useState(false);
 
+const handleView = () => {
+  navigate(`/viewbutterfly/${butterfly.id}`);
+};
+
   // Esto es lo que el componente mostrará en pantalla (es JSX, parece HTML).
   return (
     <div className="card">
@@ -38,7 +42,11 @@ const [isEditing, setIsEditing] = useState(false);
       <h3 className="card-subtitle">{butterfly.scientificName}</h3>
       <p className="card-description">{butterfly.description}</p>
 
-      <Button tooltip="Cargar información de la mariposa" title="Ver Ficha" action={() => getOneButterfly(butterfly.id)} />
+      <Button 
+      tooltip="Cargar información de la mariposa" 
+      title="Ver Ficha" 
+      action={handleView} />
+
       <Button
         tooltip="Actualizar Información Mariposa"
         title="Editar"

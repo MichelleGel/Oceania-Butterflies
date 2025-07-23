@@ -7,11 +7,7 @@ function Home() {
 
     return (
         <>
-<<<<<<< HEAD
         {/* home */}
-=======
-        <CreateButterfly/>
->>>>>>> 6940805256e820a3aca25b7400eeccbbb1cdb1ed
         </>
     )
 }

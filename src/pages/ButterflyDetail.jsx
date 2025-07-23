@@ -1,14 +1,36 @@
 import './ButterflyDetail.css'
-import butterfliesData from '../../server/butterfly.json'; //añadido por luisa, segun chat gpt esta ruta va a fallar
-import { useParams } from "react-router-dom";//añadido por luisa
+import { useParams, useNavigate } from "react-router-dom";//añadido por luisa
+import { useState, useEffect } from 'react';
+import { getOneButterfly } from '../services/ButterflyServices';
+import Button from '../components/Button';
+
+
+
 const ButterflyDetail = () => {
+  const handleCancel = () => {
+    navigate(`/butterflylist`);
+  };
+
   const { id } = useParams();//añadido por luisa
   console.log("ID de Params", id);
-  console.log("Datos JSON", butterfliesData);
-  const butterfly = butterfliesData.butterfly.find(
-    (b) => b.id.toString() === id
-  );
-  console.log("Mariposa encontrada", butterfly);
+
+
+  const [butterfly, setButterfly] = useState(null);
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    const DetailButterfly = async () => {
+      try {
+        const bfDetail = await getOneButterfly(id);
+        setButterfly(bfDetail);
+        console.log("La mariposa es:", bfDetail);
+      }
+      catch (error) {
+        console.error("error:", error);
+      }
+    }; 
+    DetailButterfly();
+  },[id]);
 
   if (!butterfly) {
     return <p>Mariposa no encontrada</p>;
@@ -42,7 +64,8 @@ const ButterflyDetail = () => {
             <p><strong>Plantas Hospederas</strong></p>
             <p>{butterfly.hostPlants}</p><br></br>
             <p><strong>Fuente de Néctar</strong></p>
-            <p>{butterfly.nectarSources}</p>                                            
+            <p>{butterfly.nectarSources}</p> <br></br>                          
+           <Button type="button" title="go back" action={() => navigate("/butterflylist")}></Button>                  
         </div>
       </div>
       </div>

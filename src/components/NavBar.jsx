@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 import React, { useState, useEffect } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { FaBars, FaTimes } from "react-icons/fa";
@@ -64,14 +63,6 @@ function Navbar() {
       </div>
     </nav>
   );
-=======
-const NavBar=()=>{
-    return (
-        <>
-        mi navbar
-        </>
-    )
->>>>>>> 6940805256e820a3aca25b7400eeccbbb1cdb1ed
 }
 
 export default Navbar;
