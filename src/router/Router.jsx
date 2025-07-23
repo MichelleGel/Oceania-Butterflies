@@ -24,7 +24,7 @@ const RouterButterfly = createBrowserRouter([{
             element:<EditButterfly/>
         },
         {
-            path:"/viewbutterfly:id",
+            path:"/viewbutterfly/:id",
             element: <ButterflyDetail/>
         },
         {

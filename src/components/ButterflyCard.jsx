@@ -2,6 +2,7 @@ import "./ButterflyCard.css";
 import Button from "./Button";
 // --- CONFIGURACIÓN DE CLOUDINARY ---
 // ¡IMPORTANTE! Reemplaza 'tu-cloud-name-aqui' con tu Cloud Name real.
+import { useNavigate } from "react-router-dom";//Añadido por luisa
 const CLOUD_NAME = "da3higfux";
 const CLOUDINARY_URL_BASE = `https://res.cloudinary.com/${CLOUD_NAME}/image/upload`;
 
@@ -18,11 +19,12 @@ const ButterflyCard = ({ butterfly }) => {
   const editButterfly = () => {
     console.log("Llamando a función Editar mariposa");
   };
-
+    const navigate = useNavigate();//Añadido por luisa
   const seeButterflySheet = () => {
     console.log("Llamando a función Ver ficha de mariposa");
+    navigate(`/mariposa/${butterfly.id}`);//Añadido por luisa, redirige a la ruta de detalle on el ID de la mariposa
   };
-
+  
   const deleteButterfly = () => {
     console.log("Llamando a función Eliminar mariposa");
   };
