@@ -20,11 +20,11 @@ const RouterButterfly = createBrowserRouter([{
             element: <CreateButterfly/>
         },
         {
-            path:"/editbutterfly:id",
+            path:"/editbutterfly/:id",
             element:<EditButterfly/>
         },
         {
-            path:"/viewbutterfly:id",
+            path:"/viewbutterfly/:id",
             element: <ButterflyDetail/>
         },
         {

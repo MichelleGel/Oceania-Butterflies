@@ -37,3 +37,29 @@
   margin-bottom: 20px;
   line-height: 1.4;
 }
+
+.edit-form-container {
+    margin-top: 20px;
+    padding: 20px;
+    border: 2px solid #ddd;
+    border-radius: 8px;
+    background-color: #f9f9f98c;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Opcional: Animación suave para la aparición del formulario */
+.edit-form-container {
+    animation: slideDown 0.3s ease-out;
+}
+
+@keyframes slideDown {
+    from {
+        opacity: 0;
+        transform: translateY(-10px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
