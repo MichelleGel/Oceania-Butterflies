@@ -51,7 +51,7 @@ const List = () => {
   return (
     <>
       <div className="listPage">
-        <h1> Mariposas de Oceanía </h1>
+
         <SearchBar
           onSearchChange={setSearchTerm} // Pasa la función para actualizar el término de búsqueda
           onRegionChange={setSelectedRegion} // Pasa la función para actualizar la región
