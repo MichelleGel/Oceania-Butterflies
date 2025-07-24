@@ -202,7 +202,7 @@ const FormButterfly = ({ initialData = {}, onSubmit, onCancel, mode = "create" }
                         </label>
 
                         <label htmlFor="family">
-                            Familia:
+                             <span className="required-label">Familia:</span>
                             <input id="family" type="text" autoComplete="off" {...register("family", { required: "Este campo es obligatorio" })} />
                             {errors.family && <p className="error-message">{errors.family.message}</p>}
                         </label>
