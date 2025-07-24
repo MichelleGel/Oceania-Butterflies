@@ -1593,48 +1593,6 @@
         "salomón"
       ],
       "publicId": "papilio-toboroi"
-    },
-    {
-      "id": "cb25",
-      "tags": [],
-      "publicId": "le7bzyndvukl9tccwt26",
-      "commonName": "bdcxfx",
-      "scientificName": "fdsaf",
-      "family": "fasdf",
-      "region": "Australia",
-      "threatLevel": "preocupación menor",
-      "coordinates": {
-        "latitude": "",
-        "longitude": ""
-      }
-    },
-    {
-      "id": "6a30",
-      "tags": [],
-      "publicId": "ls1bnhc8qzuns5swt75i",
-      "commonName": "sa<dc",
-      "scientificName": "fdzg",
-      "family": "xvdb",
-      "region": "Nueva Zelanda",
-      "threatLevel": "preocupación menor",
-      "coordinates": {
-        "latitude": "",
-        "longitude": ""
-      }
-    },
-    {
-      "id": "5746",
-      "tags": [],
-      "publicId": "b4r84voxvqyrynr1eyri",
-      "commonName": "fds",
-      "scientificName": "jvg",
-      "family": "jfjv",
-      "region": "Australia",
-      "threatLevel": "preocupación menor",
-      "coordinates": {
-        "latitude": "",
-        "longitude": ""
-      }
     }
   ]
 }

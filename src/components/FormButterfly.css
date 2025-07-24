@@ -46,29 +46,36 @@
     max-width: 100%;
     object-fit: contain;
 }
-
-body {
-    /* background-image: url('../assets/fondo-form.png'); */
+ /* body {
+    /* background-image: url('../assets/fondo-form.png'); 
     background-repeat: no-repeat;
     background-size: cover;
     background-position: center center;
     background-attachment: fixed;
     display: flex;
     justify-content: center;
-    align-items: center;
+    align-items: center; 
     min-height: 100vh;
+} */
+
+.form-background {
+  background-image: url('../assets/fondo-form.png'); 
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 40px;
+  width: 100vw;
 }
 
+
 .form-container {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    min-height: 100vh;
-    padding: 1rem;
-    box-sizing: border-box;
-    max-width: 800px;
-    margin: 0 auto;
-    width: 100%;
+  width: 100%;
+  max-width: 800px;
 }
 
 .form-card {
