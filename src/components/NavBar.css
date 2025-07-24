@@ -1,10 +1,10 @@
 @import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;700&display=swap');
 
 .navbar {
-  position: fixed;
+  position: sticky;
   top: 0;
   left: 0;
-  width: 100%;
+  width: 100vw;
   height: 70px;
   z-index: 1000;
   font-family: 'Open Sans', sans-serif;
