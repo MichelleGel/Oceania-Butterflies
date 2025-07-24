@@ -252,9 +252,9 @@ const FormButterfly = ({ initialData = {}, onSubmit,onCancel, mode = "create" })
                         </label>
                     </div>
 
-                    <Button type="submit" title="Guardar">
+                    <button type="submit" className="Button">
                         {mode === "edit" ? "Actualizar mariposa" : "Guardar mariposa"}
-                    </Button>
+                    </button>
                     {mode === "edit" && (
                         <Button type="button" title="Cancelar" action={()=> onCancel?.()}>Cancelar</Button>
                     )}

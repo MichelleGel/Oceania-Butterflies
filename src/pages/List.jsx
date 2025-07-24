@@ -3,7 +3,6 @@ import ButterflyCard from "../components/ButterflyCard"; //Importamos el compone
 import "./list.css"; //Importamos el CSS que le da estilo a esta página en particular
 import SearchBar from "../components/SearchBar"; //Importamos el componente de SearchBar
 import Map from "../components/Map"; //  Importamos el componente de Mapa
-import { Link } from "react-router-dom";
 import { getAllButterflies } from "../services/ButterflyServices";
 
 const List = () => {
@@ -11,20 +10,21 @@ const List = () => {
   const [selectedRegion, setSelectedRegion] = useState("Todas"); //Este es para la Region lo iniciamos en Todas para que se vean todas desde el inicio.
   const [selectedThreat, setSelectedThreat] = useState("Todas");
   const [butterflies, setButterflies] = useState([]);
-  // const [ButterflyData, setButterflyData] = useState([]);
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     const fetchButterflyData = async () => {
       try {
         const bfData = await getAllButterflies();
         setButterflies(bfData);
+        setLoading(false);
         console.log("Mariposas: ", bfData)
       } catch (error) {
         console.error("Error:", error);
       }
     };
     fetchButterflyData();
-  }, []);
+  }, [loading])
 
   //  useEffect(() => {
   //     const fetchData = async () => {
@@ -94,6 +94,7 @@ const List = () => {
               <ButterflyCard //Llamamos al componente donde se encuentran las tarjetas.
                 key={butterfly.id} // Identifica al elemento, escogemos id porque es único para cada mariposa.
                 butterfly={butterfly}
+                setLoading={setLoading}
               />
             )
           )}

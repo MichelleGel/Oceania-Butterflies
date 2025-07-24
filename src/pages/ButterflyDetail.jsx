@@ -1,5 +1,5 @@
 import './ButterflyDetail.css'
-import { useParams, useNavigate } from "react-router-dom";//añadido por luisa
+import { useParams, useNavigate, useLocation } from "react-router-dom";//añadido por luisa
 import { useState, useEffect } from 'react';
 import { getOneButterfly } from '../services/ButterflyServices';
 import Button from '../components/Button';
@@ -9,25 +9,37 @@ import Button from '../components/Button';
 const ButterflyDetail = () => {
 
   const { id } = useParams();//añadido por luisa
+  const location = useLocation();
   console.log("ID de Params", id);
 
 
   const [butterfly, setButterfly] = useState(null);
+  const [loading, setLoading]= useState(true);
   const navigate = useNavigate();
 
   useEffect(() => {
     const DetailButterfly = async () => {
       try {
+        setLoading(true);
+
         const bfDetail = await getOneButterfly(id);
         setButterfly(bfDetail);
         console.log("La mariposa es:", bfDetail);
       }
       catch (error) {
         console.error("error:", error);
+      } 
+      finally {
+        setLoading(false);
       }
     };
+    if(id){
     DetailButterfly();
-  }, [id]);
+    }
+  }, [id, location.key]);
+  if(loading){
+    return <p>Cargando mariposa...</p>
+  }
 
   if (!butterfly) {
     return <p>Mariposa no encontrada</p>;
