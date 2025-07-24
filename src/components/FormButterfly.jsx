@@ -70,8 +70,6 @@ const FormButterfly = ({ initialData = {}, onSubmit,onCancel, mode = "create" })
     };
 
 
-
-
     return (
         <div className="form-container">
             <div className="form-card">

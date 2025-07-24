@@ -115,7 +115,7 @@
 /* FULLSCREEN BURGER MENU AND LOGOTYPE (responsive) */
 
 
-@media (max-width: 1024px) { /*pixeles para que sea responsive antes de romperse el estilo del nav 
+@media (max-width: 1024px) { /*pixeles para que sea responsive antes de romperse el estilo del nav */
   .logo-desktop,
   .logo-text {
     display: none; /* Oculta el texto en móvil */
@@ -179,4 +179,4 @@
     font-size: 1rem;
     max-width: 70%;
   }
-
+}
