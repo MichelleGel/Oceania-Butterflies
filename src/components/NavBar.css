@@ -1,10 +1,10 @@
 @import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;700&display=swap');
 
 .navbar {
-  position: fixed;
+  position: sticky;
   top: 0;
   left: 0;
-  width: 100%;
+  width: 100vw;
   height: 70px;
   z-index: 1000;
   font-family: 'Open Sans', sans-serif;
@@ -28,7 +28,7 @@
   display: flex;
   align-items: center;
   text-decoration: none;
-  gap: 0.5rem;
+  gap: 0rem;
   max-width: 70%;
 }
 
@@ -39,8 +39,8 @@
 }
 
 .logo-desktop {
-  height: 80px;
-  margin-right: 0.5rem;
+  height: 60px;
+  margin-right: 0rem;
   display: inline-block;
 }
 
@@ -98,12 +98,6 @@
   font-weight: 400;
 }
 
-/* Navbar transparente */
-.navbar.transparent {
-  background-color: transparent;
-  box-shadow: none;
-  transition: background-color 0.4s ease, box-shadow 0.4s ease;
-}
 
 /* Navbar con color al hacer scroll */
 .navbar.scrolled {
