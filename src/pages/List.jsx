@@ -25,6 +25,29 @@ const List = () => {
     fetchButterflyData();
   }, []);
 
+  //  useEffect(() => {
+  //     const fetchData = async () => {
+  //       try {
+  //         const animalData = await getAnimals();
+  //         setData(animalData);
+  //       } catch (error) {
+  //         console.error('Error:', error);
+  //       }
+  //     };
+
+  //     fetchData();
+  //   }, []);  //cuando se monta, se ejecuta
+
+  // export const getAllButterflies = async() => {
+  //     try {
+  //         const res = await axios.get(URL_API);
+  //         return res.data;
+  //     }
+  //     catch(error) {
+  //         console.error(`getAllButterflies error:`, error.message);
+  //         throw error;
+  //     }
+
   const handleClearFilters = () => {
     setSearchTerm("");
     setSelectedRegion("Todas");
