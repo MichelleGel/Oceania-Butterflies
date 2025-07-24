@@ -1,12 +1,10 @@
-import ButterflyCard from "../components/ButterflyCard";
+import './ButterflyDetail.css'
 
-const ButterflyDetail=()=>{
-
-    return(
-        <>
-        <ButterflyCard/>
-        </>
-    )
+const ButterflyDetail = () => {
+  return (
+    <>
+    </>
+)
 }
 
 export default ButterflyDetail;

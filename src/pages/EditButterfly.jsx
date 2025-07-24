@@ -39,7 +39,7 @@ const EditButterfly = ()=>{
       console.log("Resultado de la actualización:", result);
 
       Swal.fire("Éxito", "Mariposa actualizada");
-      navigate("/")// volver a la lista o pagina donde se dio al editar
+      navigate(`/butterflycard/${id}`)// volver a la lista o pagina donde se dio al editar
     } catch (error) {
       console.error("Error al actualizar:", error);
       Swal.fire("Error", "No se pudo actualizar");
@@ -47,7 +47,7 @@ const EditButterfly = ()=>{
   };
 
   const handleCancel = () => {
-    navigate("/");
+    navigate(`/butterflylist`);
   };
 
   if (loading) {
