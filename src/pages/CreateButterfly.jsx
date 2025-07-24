@@ -69,7 +69,7 @@ const CreateButterfly = () => {
       });
 
       // Navegar a la ruta correcta (ajusta según tu aplicación)
-      navigate("/", { 
+      navigate("/butterflylist", { 
         state: { 
           created: true, 
           butterflyId: newButterfly.id || newButterfly._id,
@@ -109,20 +109,7 @@ const CreateButterfly = () => {
   return (
     <div>
       {isSubmitting && (
-        <div style={{
-          position: 'fixed',
-          top: 0,
-          left: 0,
-          width: '100%',
-          height: '100%',
-          backgroundColor: 'rgba(0, 0, 0, 0.5)',
-          display: 'flex',
-          justifyContent: 'center',
-          alignItems: 'center',
-          zIndex: 1000,
-          color: 'white',
-          fontSize: '1.2rem'
-        }}>
+        <div>
           Creando mariposa...
         </div>
       )}

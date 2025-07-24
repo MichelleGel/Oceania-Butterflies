@@ -4,12 +4,15 @@ import "./FormButterfly.css";
 import TagsInput from "./TagsInput/TagsInput.jsx";
 import "../components/TagsInput/TagsInput.css";
 import Button from "./Button.jsx";
+import Swal from "sweetalert2";
 
+const CLOUD_NAME = "da3higfux"; // Tu Cloud Name de Cloudinary
+const UPLOAD_PRESET = "mariposas_unsigned"; // El nombre de tu "Unsigned Upload Preset"
 
-const FormButterfly = ({ initialData = {}, onSubmit,onCancel, mode = "create" }) => {
+const FormButterfly = ({ initialData = {}, onSubmit, onCancel, mode = "create" }) => {
     const fileInputRef = useRef(null);
     const [imageInputType, setImageInputType] = useState("url"); // Controla si se usa URL o subida de imagen
-
+    const [isUploading, setIsUploading] = useState(false); // Estado para mostrar feedback de carga
     const {
         register,
         handleSubmit,
@@ -41,15 +44,63 @@ const FormButterfly = ({ initialData = {}, onSubmit,onCancel, mode = "create" })
         }
     }, [imageFile]);
 
-    const currentImage = imagePreview || publicId;
+    const currentImage = imagePreview || (publicId?.startsWith('http') ? publicId : `https://res.cloudinary.com/${CLOUD_NAME}/image/upload/v1/${publicId}`);
 
     const tagsValue = watch("tags") || [];
 
 
     //función que se ejecuta al eviar el forulario
-    const handleFormSubmit = (data) => {
-        console.log("Datos enviados al submit:", data);
-        onSubmit?.(data);
+    const handleFormSubmit = async (data) => {
+        setIsUploading(true); // Empezamos la carga
+
+        try {
+            let finalData = { ...data };
+            let imageToUpload = null;
+
+            // Determinamos qué imagen subir: un archivo nuevo o una URL nueva.
+            if (data.imageFile instanceof File) {
+                imageToUpload = data.imageFile;
+            } else if (data.publicId && data.publicId !== initialData.publicId && data.publicId.startsWith('http')) {
+                imageToUpload = data.publicId;
+            }
+
+            // Si hay una imagen nueva para subir (archivo o URL)...
+            if (imageToUpload) {
+                console.log("Subiendo nueva imagen a Cloudinary...");
+                const formData = new FormData();
+                formData.append("file", imageToUpload);
+                formData.append("upload_preset", UPLOAD_PRESET);
+
+                const response = await fetch(`https://api.cloudinary.com/v1_1/${CLOUD_NAME}/image/upload`, {
+                    method: "POST",
+                    body: formData,
+                });
+
+                if (!response.ok) {
+                    throw new Error("Error al subir la imagen a Cloudinary.");
+                }
+
+                const cloudinaryResponse = await response.json();
+                console.log("Respuesta de Cloudinary:", cloudinaryResponse);
+
+                // Actualizamos el publicId en nuestros datos finales
+                finalData.publicId = cloudinaryResponse.public_id;
+            }
+
+            // Limpiamos el campo de archivo que ya no es necesario
+            delete finalData.imageFile;
+
+            console.log("Datos finales para enviar al backend:", finalData);
+
+            // Llamamos a la función onSubmit del componente padre con los datos finales
+            onSubmit?.(finalData);
+
+        } catch (error) {
+            console.error("Error en el proceso de envío:", error);
+            Swal.fire('Error', 'Hubo un problema al guardar la mariposa. ' + error.message, 'error');
+        } finally {
+            setIsUploading(false); // Terminamos la carga
+        }
     };
     //aneja la selección manual de un archivo
     const handleFileSelect = (e) => {
@@ -256,9 +307,9 @@ const FormButterfly = ({ initialData = {}, onSubmit,onCancel, mode = "create" })
                         {mode === "edit" ? "Actualizar mariposa" : "Guardar mariposa"}
                     </Button>
                     {mode === "edit" && (
-                        <Button type="button" title="Cancelar" action={()=> onCancel?.()}>Cancelar</Button>
+                        <Button type="button" title="Cancelar" action={() => onCancel?.()}>Cancelar</Button>
                     )}
-                    
+
                 </form>
             </div>
         </div>
