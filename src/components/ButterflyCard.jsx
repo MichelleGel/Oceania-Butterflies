@@ -52,12 +52,6 @@ const handleView = () => {
       action={handleView} />
 
       <Button
-        tooltip="Cargar información de la mariposa"
-        title="Ver Ficha"
-        action={() => getOneButterfly(butterfly.id)}
-      />
-
-      <Button
         tooltip="Actualizar Información Mariposa"
         title="Editar"
         action={handleEdit}

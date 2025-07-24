@@ -1593,19 +1593,6 @@
         "salomón"
       ],
       "publicId": "papilio-toboroi"
-    },
-    {
-      "id": "70d9",
-      "tags": [],
-      "commonName": "hola",
-      "scientificName": "hola",
-      "family": "gehsjfghjf",
-      "region": "Australia",
-      "threatLevel": "preocupación menor",
-      "coordinates": {
-        "latitude": "",
-        "longitude": ""
-      }
     }
   ]
 }

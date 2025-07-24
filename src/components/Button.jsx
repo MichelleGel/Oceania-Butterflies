@@ -8,7 +8,7 @@ const Button = ({ title, action, tooltip, type = "button"}) => {
 
     const handleClick = async () => {
         //console.log("test" + title);
-        if (type !== "submit") e.preventDefault();
+        
         if (!action) return;
 
         setLoading(true);
