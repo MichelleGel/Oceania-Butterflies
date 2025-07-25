@@ -46,17 +46,7 @@
     max-width: 100%;
     object-fit: contain;
 }
- /* body {
-    /* background-image: url('../assets/fondo-form.png'); 
-    background-repeat: no-repeat;
-    background-size: cover;
-    background-position: center center;
-    background-attachment: fixed;
-    display: flex;
-    justify-content: center;
-    align-items: center; 
-    min-height: 100vh;
-} */
+
 
 .form-background {
   background-image: url('../assets/fondo-form.png'); 
@@ -246,6 +236,12 @@ textarea {
     font-size: 16px;
     font-weight: lighter;
     box-sizing: border-box;
+}
+.upload-image,
+.paste-url,
+.drop-image {
+    color:black;
+    font-family: 'Open Sans', sans-serif;
 }
 
 @media (max-width: 768px) {

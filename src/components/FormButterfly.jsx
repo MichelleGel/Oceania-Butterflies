@@ -138,14 +138,14 @@ const FormButterfly = ({ initialData = {}, onSubmit, onCancel, mode = "create" }
                                         className={imageInputType === "file" ? "active" : ""}
                                         onClick={() => setImageInputType("file")}
                                     >
-                                        📸 Subir imagen
+                                       <span className="upload-image"> 📸 Subir imagen</span>
                                     </button>
                                     <button
                                         type="button"
                                         className={imageInputType === "url" ? "active" : ""}
                                         onClick={() => setImageInputType("url")}
                                     >
-                                        🔗 URL
+                                        <span className="paste-url">🔗 URL</span>
                                     </button>
                                 </div>
                                 <div className="image-input-container">
@@ -175,7 +175,7 @@ const FormButterfly = ({ initialData = {}, onSubmit, onCancel, mode = "create" }
                                                 {currentImage ? (
                                                     <img src={currentImage} alt="Vista previa" className="image-preview" />
                                                 ) : (
-                                                    <span>📸<br />Arrastra una imagen aquí o haz clic</span>
+                                                    <span className="drop-image">📸<br />Arrastra una imagen aquí o haz clic</span>
                                                 )}
                                             </div>
                                             <input
