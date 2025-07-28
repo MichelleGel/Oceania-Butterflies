@@ -102,7 +102,7 @@ const FormButterfly = ({ initialData = {}, onSubmit, onCancel, mode = "create" }
             setIsUploading(false); // Terminamos la carga
         }
     };
-    //aneja la selección manual de un archivo
+    //maneja la selección manual de un archivo
     const handleFileSelect = (e) => {
         const file = e.target.files[0];
         if (file && file.type.startsWith("image/")) {
@@ -173,9 +173,9 @@ const FormButterfly = ({ initialData = {}, onSubmit, onCancel, mode = "create" }
                                                 onClick={() => fileInputRef.current.click()}
                                             >
                                                 {currentImage ? (
-                                                    <img src={currentImage} alt="Vista previa" className="image-preview" />
+                                                    <img src={currentImage}  className="image-preview" />
                                                 ) : (
-                                                    <span className="drop-image">📸<br />Arrastra una imagen aquí o haz clic</span>
+                                                    <span>📸<br />Arrastra una imagen aquí o haz clic</span>
                                                 )}
                                             </div>
                                             <input
@@ -280,12 +280,12 @@ const FormButterfly = ({ initialData = {}, onSubmit, onCancel, mode = "create" }
                             </label>
 
                             <label htmlFor="coordinates-latitude">
-                                Latitud:
+                                Latitud (Coordinadas):
                                 <input id="coordinates-latitude" type="text" autoComplete="off" {...register("coordinates.latitude")} />
                             </label>
 
                             <label htmlFor="coordinates-longitude">
-                                Longitud:
+                                Longitud (Coordinadas):
                                 <input id="coordinates-longitude" type="text" autoComplete="off" {...register("coordinates.longitude")} />
                             </label>
 

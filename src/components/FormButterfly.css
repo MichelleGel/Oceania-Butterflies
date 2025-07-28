@@ -238,8 +238,7 @@ textarea {
     box-sizing: border-box;
 }
 .upload-image,
-.paste-url,
-.drop-image {
+.paste-url {
     color:black;
     font-family: 'Open Sans', sans-serif;
 }
