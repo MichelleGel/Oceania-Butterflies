@@ -15,10 +15,11 @@ const SearchBar = ({
         type="text"
         placeholder="Buscar mariposas..."
         onChange={(e) => onSearchChange(e.target.value)} // onChange: Va detectar el cambio, se activa automáticamente (es una propiedad del input). e.target.value = recoge el valor de lo que se está escribiendo en el input.
-      />
-      <button onClick={onClearAll}>Todas</button>
+      /> <br></br>
+      <div className="filterOptions">
+      <button className="allButton" onClick={onClearAll}>Todas</button>
       <div className="regionContainer">
-        <p className="threatTitle">Tipo de Amenaza</p>
+        <p className="threatTitle">Ubicación</p>
         <div className="regionButtons">
           <button onClick={() => onRegionChange("Australia")}>Australia</button>
           <button onClick={() => onRegionChange("Nueva Zelanda")}>
@@ -42,6 +43,7 @@ const SearchBar = ({
             En peligro crítico
           </button>
         </div>
+      </div>
       </div>
     </div>
   );
