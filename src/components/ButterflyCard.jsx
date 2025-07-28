@@ -2,9 +2,6 @@ import "./ButterflyCard.css";
 import Button from "./Button";
 import { deleteButterfly } from '../services/ButterflyServices';
 import Swal from 'sweetalert2';
-//import { useState } from 'react';
-import FormButterfly from "./FormButterfly";
-//import { set } from "react-hook-form";
 import { useNavigate } from "react-router-dom";
 
 

@@ -48,7 +48,6 @@ const MapComponent = ({ butterflies }) => {
             <img src={imageUrl2}></img><br/>
             <strong>{butterfly.commonName}</strong><br/>
             <em>{butterfly.scientificName}</em>
-             
           </Popup>
         </Marker>
       );
