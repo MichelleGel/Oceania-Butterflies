@@ -1,5 +1,5 @@
 import './ButterflyDetail.css'
-import { useParams, useNavigate } from "react-router-dom";//añadido por luisa
+import { useParams, useNavigate } from "react-router-dom";
 import { useState, useEffect } from 'react';
 import { getOneButterfly } from '../services/ButterflyServices';
 import Button from '../components/Button';
@@ -11,7 +11,7 @@ const ButterflyDetail = () => {
     navigate(`/butterflylist`);
   };
 
-  const { id } = useParams();//añadido por luisa
+  const { id } = useParams();
   console.log("ID de Params", id);
 
 
@@ -34,8 +34,8 @@ const ButterflyDetail = () => {
 
   if (!butterfly) {
     return <p>Mariposa no encontrada</p>;
-  }//añadido por luisa
-   const imageUrl = `https://res.cloudinary.com/da3higfux/image/upload/e_background_removal,w_400,h_400,c_pad,b_transparent,f_auto,q_auto/${butterfly.publicId}.png`;//añadido por luisa
+  }
+   const imageUrl = `https://res.cloudinary.com/da3higfux/image/upload/e_background_removal,w_400,h_400,c_pad,b_transparent,f_auto,q_auto/${butterfly.publicId}.png`;
   return (
     <>
       <div className="butterflyDetailWrapper">
@@ -54,12 +54,12 @@ const ButterflyDetail = () => {
             <p>{butterfly.flightSeason}</p><br></br>            
             <p><strong>Estado de Conservación</strong></p>
             <p>{butterfly.threatLevel}</p>
-            <p>Población: {butterfly.population}</p><br></br>
+            <p><strong>Población</strong> {butterfly.population}</p><br></br>
             <p><strong>Familia</strong></p>
             <p>{butterfly.family}</p><br></br>
             <p><strong>Comportamiento</strong></p>
             <p>{butterfly.behavior}</p><br></br>
-            <p><strong>Description</strong></p>
+            <p><strong>Descripción</strong></p>
             <p>{butterfly.description}</p><br></br>
             <p><strong>Plantas Hospederas</strong></p>
             <p>{butterfly.hostPlants}</p><br></br>
