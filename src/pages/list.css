@@ -72,6 +72,7 @@ body {
   .card {
     flex-basis: calc(50% - 10px);
   }
+  
 }
 
 
