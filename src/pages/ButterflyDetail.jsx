@@ -55,25 +55,27 @@ const ButterflyDetail = () => {
             <img src={imageUrl} alt={butterfly.commonName} className="butterflyImage" />
           </div>
           <div className="detailList">
-            <p><strong>Ubicación</strong></p>
+            <p><strong>
+              <i className="fa-solid fa-location-dot" style={{ marginRight: "8px" }}></i>
+              Ubicación</strong></p>
             <p>{butterfly.region}, {butterfly.specificLocation}</p><br></br>
-            <p><strong>Tamaño</strong></p>
+            <p><strong><i className="fa-solid fa-ruler"></i>Tamaño</strong></p>
             <p>{butterfly.wingspan}{butterfly.wingspanUnit}</p><br></br>
-            <p><strong>Temporada de Vuelo</strong></p>
+            <p><strong><i class="fa-solid fa-plane"></i>Temporada de Vuelo</strong></p>
             <p>{butterfly.flightSeason}</p><br></br>
-            <p><strong>Estado de Conservación</strong></p>
-            <p>{butterfly.threatLevel}</p>
-            <p><strong>Población:</strong> <br></br>{butterfly.population}</p><br></br>
-            <p><strong>Familia</strong></p>
+            <p><strong><i className="fa-solid fa-triangle-exclamation"></i>Estado de Conservación</strong></p>
+            <p>{butterfly.threatLevel}</p><br></br>
+            <p><strong><i className="fa-solid fa-people-group"></i>Población</strong> <br></br>{butterfly.population}</p><br></br>
+            <p><strong><i className="fa-solid fa-people-roof"></i>Familia</strong></p>
             <p>{butterfly.family}</p><br></br>
-            <p><strong>Comportamiento</strong></p>
+            <p><strong><i class="fa-solid fa-tree"></i>Comportamiento</strong></p>
             <p>{butterfly.behavior}</p><br></br>
-            <p><strong>Description</strong></p>
+            <p><strong><i className="fa-solid fa-book"></i>Descripción</strong></p>
             <p>{butterfly.description}</p><br></br>
-            <p><strong>Plantas Hospederas</strong></p>
-            <p>{butterfly.hostPlants}</p><br></br>
-            <p><strong>Fuente de Néctar</strong></p>
-            <p>{butterfly.nectarSources}</p> <br></br>
+            <p><strong><i className="fa-solid fa-seedling"></i>Plantas Hospederas</strong></p>
+            <p>{butterfly.hostPlants.join(" , ")}</p><br></br>
+            <p><strong><i className="fa-solid fa-apple-whole"></i>Fuente de Néctar</strong></p>
+            <p>{butterfly.nectarSources.join(" , ")}</p> <br></br>
             <Button type="button" title="go back" action={() => navigate("/butterflylist")}></Button>
           </div>
         </div>

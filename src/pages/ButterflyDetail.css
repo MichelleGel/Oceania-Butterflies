@@ -1,3 +1,6 @@
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;600;700&family=Playfair+Display:wght@400;600;700&display=swap');
+
 .butterflyDetailWrapper {
   display: flex !important;
   justify-content: center !important;
@@ -5,13 +8,11 @@
   min-height: 100vh;
   box-sizing: border-box;
   width: 100%;
-  /* margin: 0 auto; */
   align-items: center !important;
 }
 
 .detailWindow {
   max-width: 700px;
-  /* margin: 40px auto 80px auto; */
   padding: 20px 30px;
   background-color: #fefefe;
   border-radius: 12px;
@@ -24,10 +25,11 @@
   text-align: center;
   margin-bottom: 25px;
 }
-
-.detailHeader h1 {
+.detailHeader h1,
+h3 {
   font-weight: 700;
   margin-bottom: 5px;
+  font-family: "Playfair Display", serif;
 }
 
 .detailList {
@@ -37,6 +39,7 @@
 
 .detailList p {
   margin: 8px 0;
+  font-family:  'Open Sans', sans-serif;
 }
 
 .detailList br {
@@ -59,5 +62,5 @@ img.butterflyImage {
   object-fit: contain;
   margin-top: 10px;
   border-radius: 8px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 4px 8px rgba(0,0,0,0.2);
 }
