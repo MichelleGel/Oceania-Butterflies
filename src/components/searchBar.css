@@ -39,6 +39,16 @@ margin: auto;
 }
 
 .allButton {
-  width: 10vw;
   margin-top: 25px;
+}
+
+@media(max-width:640px){
+.regionButtons {
+  display: flex;
+  flex-wrap: wrap;
+}
+.filterOptions{
+  display: flex;
+  flex-direction: column;
+}
 }

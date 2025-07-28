@@ -54,7 +54,7 @@ body {
 
 
 
-@media (min-width: 768px) {
+@media (min-width: 1024px) {
   .listPage {
     padding: 40px;
   }
@@ -72,7 +72,7 @@ body {
   .card {
     flex-basis: calc(50% - 10px);
   }
-  
+
 }
 
 

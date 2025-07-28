@@ -12,7 +12,7 @@ const List = () => {
   const [butterflies, setButterflies] = useState([]);
   const [loading, setLoading] = useState(true);
 
-  useEffect(() => {
+  useEffect(() => { //.
     const fetchButterflyData = async () => {
       try {
         const bfData = await getAllButterflies();
@@ -25,29 +25,6 @@ const List = () => {
     };
     fetchButterflyData();
   }, [loading])
-
-  //  useEffect(() => {
-  //     const fetchData = async () => {
-  //       try {
-  //         const animalData = await getAnimals();
-  //         setData(animalData);
-  //       } catch (error) {
-  //         console.error('Error:', error);
-  //       }
-  //     };
-
-  //     fetchData();
-  //   }, []);  //cuando se monta, se ejecuta
-
-  // export const getAllButterflies = async() => {
-  //     try {
-  //         const res = await axios.get(URL_API);
-  //         return res.data;
-  //     }
-  //     catch(error) {
-  //         console.error(`getAllButterflies error:`, error.message);
-  //         throw error;
-  //     }
 
   const handleClearFilters = () => {
     setSearchTerm("");
