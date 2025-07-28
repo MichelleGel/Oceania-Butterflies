@@ -12,7 +12,7 @@ const List = () => {
   const [butterflies, setButterflies] = useState([]);
   // const [ButterflyData, setButterflyData] = useState([]);
 
-  useEffect(() => {
+  useEffect(() => { //.
     const fetchButterflyData = async () => {
       try {
         const bfData = await getAllButterflies();
