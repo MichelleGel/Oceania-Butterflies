@@ -14,5 +14,5 @@ button {
     transition: border-color 0.3 ease;
 }
 button:hover{
-    border-color: blue;
+    border-color: #1B4332;
 }
