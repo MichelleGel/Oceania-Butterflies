@@ -8,7 +8,7 @@ const Footer = () => {
         Proyecto colaborativo desarrollado por 5 coders del bootcamp FemCoders de
 
         <a href="https://factoriaf5.org" target="_blank" rel="noopener noreferrer">
-          {' '}Factoría F5.          
+          {' '} Factoría F5.          
         </a>
         © [2025] Todos los derechos reservados.
       </div>
