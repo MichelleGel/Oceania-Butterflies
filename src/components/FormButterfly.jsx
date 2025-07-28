@@ -71,6 +71,7 @@ const FormButterfly = ({ initialData = {}, onSubmit,onCancel, mode = "create" })
 
 
     return (
+        <div className="form-background">
         <div className="form-container">
             <div className="form-card">
                 <h1>{mode === "edit" ? "Editar Mariposa" : "Agregar nueva Mariposa"}</h1>
@@ -228,12 +229,12 @@ const FormButterfly = ({ initialData = {}, onSubmit,onCancel, mode = "create" })
                         </label>
 
                         <label htmlFor="coordinates-latitude">
-                            Latitud:
+                            Latitud (Coordenadas):
                             <input id="coordinates-latitude" type="text" autoComplete="off" {...register("coordinates.latitude")} />
                         </label>
 
                         <label htmlFor="coordinates-longitude">
-                            Longitud:
+                            Longitud (Coordenadas):
                             <input id="coordinates-longitude" type="text" autoComplete="off" {...register("coordinates.longitude")} />
                         </label>
 
@@ -261,6 +262,7 @@ const FormButterfly = ({ initialData = {}, onSubmit,onCancel, mode = "create" })
                     
                 </form>
             </div>
+        </div>
         </div>
     );
 };

@@ -47,16 +47,18 @@
     object-fit: contain;
 }
 
-body {
+.form-background {
     background-image: url('../assets/fondo-form.png');
-    background-repeat: no-repeat;
     background-size: cover;
-    background-position: center center;
+    background-position: center;
+    background-repeat: no-repeat;
     background-attachment: fixed;
+    min-height: 100vh;
     display: flex;
     justify-content: center;
     align-items: center;
-    min-height: 100vh;
+    padding: 40px;
+    width: 100vw;
 }
 
 .form-container {
