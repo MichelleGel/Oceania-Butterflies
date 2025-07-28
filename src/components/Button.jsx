@@ -33,5 +33,4 @@ const Button = ({ title, action, tooltip, type = "button"}) => {
         </>
     )}
 
-
 export default Button
