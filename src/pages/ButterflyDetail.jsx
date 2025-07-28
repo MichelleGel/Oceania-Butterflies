@@ -63,7 +63,7 @@ const ButterflyDetail = () => {
             <p>{butterfly.flightSeason}</p><br></br>
             <p><strong>Estado de Conservación</strong></p>
             <p>{butterfly.threatLevel}</p>
-            <p>Población: {butterfly.population}</p><br></br>
+            <p><strong>Población:</strong> <br></br>{butterfly.population}</p><br></br>
             <p><strong>Familia</strong></p>
             <p>{butterfly.family}</p><br></br>
             <p><strong>Comportamiento</strong></p>
