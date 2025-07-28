@@ -8,4 +8,5 @@ button {
     text-transform: uppercase;
     border-radius: 10px;
     margin: 2px;
+    border: none;
 }
