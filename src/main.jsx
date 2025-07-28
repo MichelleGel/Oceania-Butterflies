@@ -4,6 +4,7 @@ import './index.css'
 import { RouterProvider } from 'react-router-dom'
 import RouterButterfly from './router/Router.jsx'
 
+
 createRoot(document.getElementById('root')).render(
   <StrictMode>
     <RouterProvider router={RouterButterfly}/>
