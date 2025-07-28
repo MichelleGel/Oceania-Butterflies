@@ -61,16 +61,10 @@
     width: 100vw;
 }
 
+
 .form-container {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    min-height: 100vh;
-    padding: 1rem;
-    box-sizing: border-box;
-    max-width: 800px;
-    margin: 0 auto;
     width: 100%;
+    max-width: 800px;
 }
 
 .form-card {
@@ -241,6 +235,12 @@ textarea {
     font-size: 16px;
     font-weight: lighter;
     box-sizing: border-box;
+}
+
+.upload-image,
+.paste-url {
+    color: black;
+    font-family: 'Open Sans', sans-serif;
 }
 
 @media (max-width: 768px) {

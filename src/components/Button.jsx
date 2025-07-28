@@ -1,13 +1,14 @@
 import "./Button.css";
 import React, {useState} from "react";
 
-const Button = ({ title, action, tooltip }) => {
+const Button = ({ title, action, tooltip, type = "button"}) => {
 
     const [loading, setLoading] = useState(false);
     
 
     const handleClick = async () => {
         //console.log("test" + title);
+        
         if (!action) return;
 
         setLoading(true);
@@ -26,7 +27,7 @@ const Button = ({ title, action, tooltip }) => {
     
     return (
         <>
-            <button title={tooltip} type="button" onClick={handleClick} disabled={loading}>
+            <button title={tooltip} type={type} onClick={handleClick} disabled={loading}>
             {loading ? 'Cargando ...': title}
             </button>
         </>
