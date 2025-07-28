@@ -48,7 +48,7 @@ const FormButterfly = ({ initialData = {}, onSubmit,onCancel, mode = "create" })
 
     //función que se ejecuta al eviar el forulario
     const handleFormSubmit = (data) => {
-        console.log("Datos enviados:", data);
+        console.log("Datos enviados al submit:", data);
         onSubmit?.(data);
     };
     //aneja la selección manual de un archivo
@@ -68,8 +68,6 @@ const FormButterfly = ({ initialData = {}, onSubmit,onCancel, mode = "create" })
             setValue("publicId", "");
         }
     };
-
-
 
 
     return (

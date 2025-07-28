@@ -78,7 +78,7 @@ body {
     max-width: 600px;
     width: 100%;
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-    
+
 }
 
 h1 {
@@ -230,7 +230,8 @@ h2 {
     font-weight: 600;
     text-align: center;
 }
-input, 
+
+input,
 select,
 select option,
 textarea {
@@ -239,8 +240,9 @@ textarea {
     font-weight: lighter;
     box-sizing: border-box;
 }
+
 @media (max-width: 768px) {
-  .form-grid {
-    grid-template-columns: 1fr;
-  }
+    .form-grid {
+        grid-template-columns: 1fr;
+    }
 }

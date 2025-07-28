@@ -6,6 +6,7 @@ import Layout from "../layout/Layout";
 import Home from "../pages/Home";
 import List from "../pages/List";
 import Contact from "../pages/Contact";
+import ButterflyCard from "../components/ButterflyCard";
 
 const RouterButterfly = createBrowserRouter([{
     path: "/",
@@ -20,11 +21,11 @@ const RouterButterfly = createBrowserRouter([{
             element: <CreateButterfly/>
         },
         {
-            path:"/editbutterfly:id",
+            path:"/editbutterfly/:id",
             element:<EditButterfly/>
         },
         {
-            path:"/viewbutterfly:id",
+            path:"/viewbutterfly/:id",
             element: <ButterflyDetail/>
         },
         {
@@ -34,6 +35,10 @@ const RouterButterfly = createBrowserRouter([{
         {
             path:"/contactcreators",
             element: <Contact/>
+        },
+        {
+            path:"/butterflycard/:id",
+            element: <ButterflyCard/>
         }
     ]
 }])

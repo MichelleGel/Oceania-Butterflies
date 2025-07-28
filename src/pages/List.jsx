@@ -3,6 +3,7 @@ import ButterflyCard from "../components/ButterflyCard"; //Importamos el compone
 import "./list.css"; //Importamos el CSS que le da estilo a esta página en particular
 import SearchBar from "../components/SearchBar"; //Importamos el componente de SearchBar
 import Map from "../components/Map"; //  Importamos el componente de Mapa
+import { Link } from "react-router-dom";
 import { getAllButterflies } from "../services/ButterflyServices";
 
 const List = () => {
