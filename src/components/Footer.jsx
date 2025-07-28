@@ -1,22 +1,17 @@
 import React from 'react';
-import { useTranslation } from 'react-i18next';
-import './Footer.css';  // estilos abajo
-import '../i18n'; // importa la config de i18n (ajusta ruta si es necesario)
+import './Footer.css';
 
 const Footer = () => {
-  const { t, i18n } = useTranslation();
-
-  const toggleLanguage = () => {
-    const nextLang = i18n.language === 'es' ? 'en' : 'es';
-    i18n.changeLanguage(nextLang);
-  };
-
   return (
     <footer className="footer">
-      <div className="footer-text">{t('footer_text')}</div>
-      <button className="lang-button" onClick={toggleLanguage}>
-        {t('change_language')}
-      </button>
+      <div className="footer-text">
+        Proyecto colaborativo desarrollado por 5 coders del bootcamp FemCoders de
+
+        <a href="https://factoriaf5.org" target="_blank" rel="noopener noreferrer">
+          {' '}Factoría F5.          
+        </a>
+        © [2025] Todos los derechos reservados.
+      </div>
     </footer>
   );
 };
