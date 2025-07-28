@@ -26,29 +26,6 @@ const List = () => {
     fetchButterflyData();
   }, [loading])
 
-  //  useEffect(() => {
-  //     const fetchData = async () => {
-  //       try {
-  //         const animalData = await getAnimals();
-  //         setData(animalData);
-  //       } catch (error) {
-  //         console.error('Error:', error);
-  //       }
-  //     };
-
-  //     fetchData();
-  //   }, []);  //cuando se monta, se ejecuta
-
-  // export const getAllButterflies = async() => {
-  //     try {
-  //         const res = await axios.get(URL_API);
-  //         return res.data;
-  //     }
-  //     catch(error) {
-  //         console.error(`getAllButterflies error:`, error.message);
-  //         throw error;
-  //     }
-
   const handleClearFilters = () => {
     setSearchTerm("");
     setSelectedRegion("Todas");
@@ -75,7 +52,7 @@ const List = () => {
   return (
     <>
       <div className="listPage">
-        <h1> Mariposas de Oceanía </h1>
+
         <SearchBar
           onSearchChange={setSearchTerm} // Pasa la función para actualizar el término de búsqueda
           onRegionChange={setSelectedRegion} // Pasa la función para actualizar la región

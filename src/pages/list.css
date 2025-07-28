@@ -45,7 +45,7 @@ body {
   display: flex;
   flex-direction: column; /* En móvil, los elementos se apilan verticalmente */
   gap: 15px; /* Espacio entre los grupos de filtros */
-    background-color: #f0f4e8; /* Un verde muy pálido, o el color que prefieras */
+    background-color: #B7B7A4; /* Un verde muy pálido, o el color que prefieras */
   padding: 20px;
   border-radius: 15px;
   border: 1px solid #d4d8ce;
