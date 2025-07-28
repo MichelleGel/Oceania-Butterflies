@@ -1,3 +1,6 @@
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;600;700&family=Playfair+Display:wght@400;600;700&display=swap');
+
 .butterflyDetailWrapper {
   display: flex !important;
    justify-content: center !important; 
@@ -6,6 +9,7 @@
   box-sizing: border-box;
   width: 100%;
   align-items: center !important;
+  margin-top: 50rem;
 }
 .detailWindow {
   max-width: 700px;
@@ -20,9 +24,11 @@
   text-align: center;
   margin-bottom: 25px;
 }
-.detailHeader h1 {
+.detailHeader h1,
+h3 {
   font-weight: 700;
   margin-bottom: 5px;
+  font-family: "Playfair Display", serif;
 }
 
 .detailList {
@@ -32,6 +38,7 @@
 
 .detailList p {
   margin: 8px 0;
+  font-family:  'Open Sans', sans-serif;
 }
 
 .detailList br {
