@@ -10,21 +10,20 @@ const List = () => {
   const [selectedRegion, setSelectedRegion] = useState("Todas"); //Este es para la Region lo iniciamos en Todas para que se vean todas desde el inicio.
   const [selectedThreat, setSelectedThreat] = useState("Todas");
   const [butterflies, setButterflies] = useState([]);
-  const [loading, setLoading] = useState(true);
+  // const [ButterflyData, setButterflyData] = useState([]);
 
   useEffect(() => { //.
     const fetchButterflyData = async () => {
       try {
         const bfData = await getAllButterflies();
         setButterflies(bfData);
-        setLoading(false);
         console.log("Mariposas: ", bfData)
       } catch (error) {
         console.error("Error:", error);
       }
     };
     fetchButterflyData();
-  }, [loading])
+  }, []);
 
   const handleClearFilters = () => {
     setSearchTerm("");
@@ -71,7 +70,6 @@ const List = () => {
               <ButterflyCard //Llamamos al componente donde se encuentran las tarjetas.
                 key={butterfly.id} // Identifica al elemento, escogemos id porque es único para cada mariposa.
                 butterfly={butterfly}
-                setLoading={setLoading}
               />
             )
           )}
