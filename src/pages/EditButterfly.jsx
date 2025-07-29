@@ -9,33 +9,91 @@ const EditButterfly = ()=>{
   const { id } = useParams();
   const navigate = useNavigate();
   const [butterfly, setButterfly] = useState(null);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
+  const [isSubmitting, setIsSubmitting] =useState(false);
 
   useEffect(()=>{
     const fetchData = async () => {
+      console.log("informacion", fetchData)
       try {
+        setLoading(true);
+        setError(null);
+        console.log("Cargando mariposa con ID:", id);
+
         const data = await getOneButterfly(id);
         console.log("Datos recibidos de la API", data)
         setButterfly(data);
+
       } catch (error) {
-        Swal.fire("Error", "No se pudo cargar la mariposa");
-        console.error("Error al obtener la mariposa", error)
-        throw error;
-      }
-    };
+        console.error("Error al obtener la mariposa", error);
+        setError("No se pudo cargar la mariposa");
+
+        await Swal.fire({
+          title:"Error",
+          text: "No se pudo cargar la mariposa",
+          icon: "error",
+          confirmButtonText:"OK"
+        });
+
+    } finally {
+      setLoading(false);
+    }
+  };
+  if (id) {
     fetchData();
+  }
   }, [id]);
 
   const handleSubmit = async (updatedData) => {
     try {
-      await updateButterfly(id, updatedData);
-      Swal.fire("Éxito", "Mariposa actualizada");
-      navigate("/")// volver a la lista o pagina donde se dio al editar
+      setIsSubmitting(true);
+      console.log("Datos a actualizar:", updatedData);
+
+      const result = await updateButterfly(id, updatedData);
+      console.log("Resultado de la actualización:", result);
+
+      setButterfly(result);
+
+      await Swal.fire({
+        title: "Éxito", 
+        text: "Mariposa actualizada correctamente",
+        icon:"success",
+        confirmButtonText:"OK"
+    });
+
+      navigate(`/viewbutterfly/${id}`)// volver a la butterflydetail
+    
     } catch (error) {
+      console.error("Error al actualizar:", error);
       Swal.fire("Error", "No se pudo actualizar");
-      throw error;
-      
+    }
+    finally {
+      setIsSubmitting(false);
     }
   };
+
+
+  const handleCancel = () => {
+    navigate(`/butterflylist`);
+    isSubmitting (false)
+  };
+
+  if (loading) {
+    return (
+    <div className="loading">Cargando...</div>
+    )
+  }
+
+  if (error) {
+    return (
+      <div className="error">
+        <p>{error}</p>
+        <button onClick={() => navigate("/")}>Volver</button>
+      </div>
+    );
+  }
+
     return (
       <>
       {butterfly ? (
@@ -43,28 +101,20 @@ const EditButterfly = ()=>{
         initialData={butterfly}
         mode="edit"
         onSubmit={handleSubmit}
-        onCancel={()=>navigate("/")}/>
-      ) : ( <p>Cargando...</p>
+        onCancel={handleCancel}/>
+      ) : ( 
+        <div className="error">
+          <p>No se encontró la mariposa</p>
+          <button onClick={() => navigate("/butterflylist")}>Volver</button>
+        </div>
       )}
       </>
   );
 }; 
 
+
+
 export default EditButterfly;
 
 
-/*const EditButterfly = ({ butterflyData }) => {
-  const handleUpdate = (data) => {
-    console.log("Mariposa actualizada:", data);
-    // Aquí puedes actualizar los datos en el backend
-  };
-
-  return (
-    <FormButterfly
-      initialData={butterflyData}
-      onSubmit={handleUpdate}
-      mode="edit"
-    />
-  );
-};*/
 

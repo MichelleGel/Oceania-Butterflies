@@ -41,10 +41,10 @@ function Navbar() {
           className={`navbar-links ${isMenuOpen ? "menu-open" : ""}`}
           aria-expanded={isMenuOpen}
         >
-          <li><Link to="/contactcreators" className={getLinkClass("/")}>Quiénes Somos</Link></li>
+          
           <li><Link to="/butterflylist" className={getLinkClass("/explora")}>Explora</Link></li>
           <li><Link to="/newbutterfly" className={getLinkClass("/añadir")}>Añadir Mariposa</Link></li>
-          <li><Link to="/registro" className={getLinkClass("/registro")}>Registro</Link></li>
+          <li><Link to="/contactcreators" className={getLinkClass("/")}>Quiénes Somos</Link></li>
         </ul>
       </div>
     </nav>

@@ -12,7 +12,7 @@
       "wingspanUnit": "cm",
       "description": "Mariposa de color azul eléctrico brillante con bordes negros. Endémica del norte de Australia y considerada una de las más bellas del continente.",
       "conservationStatus": "stable",
-      "threatLevel": "Preocupación menor",
+      "threatLevel": "preocupación menor",
       "population": "abundante",
       "flightSeason": [
         "octubre",
@@ -43,7 +43,7 @@
         "azul brillante",
         "turismo"
       ],
-      "publicId": "papilio-ulysses"
+      "publicId": "swwjn3wlrrax40fczrn1"
     },
     {
       "id": "2",

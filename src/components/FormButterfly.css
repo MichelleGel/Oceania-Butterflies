@@ -47,28 +47,23 @@
     object-fit: contain;
 }
 
-body {
+.form-background {
     background-image: url('../assets/fondo-form.png');
-    background-repeat: no-repeat;
     background-size: cover;
-    background-position: center center;
+    background-position: center;
+    background-repeat: no-repeat;
     background-attachment: fixed;
+    min-height: 100vh;
     display: flex;
     justify-content: center;
     align-items: center;
-    min-height: 100vh;
+    padding: 40px;
+    width: 100vw;
 }
 
+
 .form-container {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    min-height: 100vh;
-    padding: 1rem;
-    box-sizing: border-box;
     max-width: 800px;
-    margin: 0 auto;
-    width: 100%;
 }
 
 .form-card {
@@ -78,7 +73,7 @@ body {
     max-width: 600px;
     width: 100%;
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-    
+
 }
 
 h1 {
@@ -230,7 +225,8 @@ h2 {
     font-weight: 600;
     text-align: center;
 }
-input, 
+
+input,
 select,
 select option,
 textarea {
@@ -239,8 +235,15 @@ textarea {
     font-weight: lighter;
     box-sizing: border-box;
 }
+
+.upload-image,
+.paste-url {
+    color: black;
+    font-family: 'Open Sans', sans-serif;
+}
+
 @media (max-width: 768px) {
-  .form-grid {
-    grid-template-columns: 1fr;
-  }
+    .form-grid {
+        grid-template-columns: 1fr;
+    }
 }

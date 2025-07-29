@@ -1,41 +1,17 @@
-/* .butterfly-list-container{
-    display: flex;
-    flex-wrap: wrap;
-    gap: 1.5vw;
-}
-.listPage{
-    margin-left: 1vw;
-    margin-top: 5vw;
-
-}
-body{
-margin: auto;
-background-color: #E0E6D8;
-}
-
-.searchBarinput{
-    width: 25vw;
-    height: 2vw;
-    border-radius: 15px;
-
-} */
-
-/* --- ESTILOS GENERALES (Mobile First) --- */
 
 body {
   margin: 0;
   padding: 0;
   background-color: #e0e6d8;
-  font-family: sans-serif; /* Es bueno definir una fuente base */
+  font-family: sans-serif; 
 }
 
 .listPage {
-  /* En móvil, usamos padding en lugar de margin para un mejor control */
   padding: 20px 15px;
 }
 
 .listPage h1 {
-  font-size: 2rem; /* Tamaño de fuente más grande */
+  font-size: 2rem; 
 }
 
 /* --- BARRA DE BÚSQUEDA --- */
@@ -43,21 +19,21 @@ body {
 /* Hacemos que el contenedor de la barra sea flexible */
 .searchContainer {
   display: flex;
-  flex-direction: column; /* En móvil, los elementos se apilan verticalmente */
-  gap: 15px; /* Espacio entre los grupos de filtros */
-    background-color: #f0f4e8; /* Un verde muy pálido, o el color que prefieras */
+  flex-direction: column; 
+  gap: 15px; 
+  background-color: #B7B7A4; 
   padding: 20px;
   border-radius: 15px;
   border: 1px solid #d4d8ce;
 }
 
 .searchBarinput {
-  width: 100%; /* El input ocupa todo el ancho */
+  width: 100%; 
   padding: 12px;
   font-size: 1rem;
   border-radius: 8px;
   border: 1px solid #ccc;
-  box-sizing: border-box; /* Asegura que el padding no afecte el ancho total */
+  box-sizing: border-box; 
 }
 
 /* --- GRID DE TARJETAS --- */
@@ -65,27 +41,26 @@ body {
 .butterfly-list-container {
   display: flex;
   flex-wrap: wrap;
-  gap: 20px; /* Un espaciado fijo funciona mejor que vw */
+  gap: 20px; 
   margin-top: 30px;
 }
 
-/* Para que esto funcione, asegúrate de que tu componente ButterflyCard
-   tenga un div principal con la clase "card". */
+
 .card {
-  flex: 1 1 100%; /* Móvil: Cada tarjeta ocupa el 100% del ancho */
+  flex: 1 1 100%; 
   box-sizing: border-box;
-  /* (Aquí van los estilos de tu tarjeta: color de fondo, borde, etc.) */
+  
 }
 
-/* --- MEDIA QUERY PARA TABLETS --- */
 
-@media (min-width: 768px) {
+
+@media (min-width: 1024px) {
   .listPage {
     padding: 40px;
   }
 
   .searchContainer {
-    flex-direction: row; /* En tablet, volvemos a poner los filtros en fila */
+    flex-direction: row; 
     align-items: center;
     justify-content: space-between;
   }
@@ -95,14 +70,12 @@ body {
   }
 
   .card {
-    /* Tablet: Cada tarjeta puede ocupar hasta un 48% del ancho,
-       permitiendo 2 tarjetas por fila. */
     flex-basis: calc(50% - 10px);
   }
+
 }
 
 
-/* --- MEDIA QUERY PARA ESCRITORIOS --- */
 
 @media (min-width: 1024px) {
   .listPage {
@@ -110,14 +83,13 @@ body {
   }
 
   .card {
-    /* Escritorio: Permitimos 3 tarjetas por fila. */
+
     flex-basis: calc(33.333% - 14px);
   }
 }
 
 @media (min-width: 1440px) {
   .card {
-    /* Escritorios grandes: Permitimos 4 tarjetas por fila. */
     flex-basis: calc(25% - 15px);
   }
 }

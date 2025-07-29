@@ -10,43 +10,21 @@ const List = () => {
   const [selectedRegion, setSelectedRegion] = useState("Todas"); //Este es para la Region lo iniciamos en Todas para que se vean todas desde el inicio.
   const [selectedThreat, setSelectedThreat] = useState("Todas");
   const [butterflies, setButterflies] = useState([]);
-  // const [ButterflyData, setButterflyData] = useState([]);
+  const [loading, setLoading] = useState(true);
 
-  useEffect(() => {
+  useEffect(() => { //.
     const fetchButterflyData = async () => {
       try {
         const bfData = await getAllButterflies();
         setButterflies(bfData);
+        setLoading(false);
         console.log("Mariposas: ", bfData)
       } catch (error) {
         console.error("Error:", error);
       }
     };
     fetchButterflyData();
-  }, []);
-
-  //  useEffect(() => {
-  //     const fetchData = async () => {
-  //       try {
-  //         const animalData = await getAnimals();
-  //         setData(animalData);
-  //       } catch (error) {
-  //         console.error('Error:', error);
-  //       }
-  //     };
-
-  //     fetchData();
-  //   }, []);  //cuando se monta, se ejecuta
-
-  // export const getAllButterflies = async() => {
-  //     try {
-  //         const res = await axios.get(URL_API);
-  //         return res.data;
-  //     }
-  //     catch(error) {
-  //         console.error(`getAllButterflies error:`, error.message);
-  //         throw error;
-  //     }
+  }, [loading])
 
   const handleClearFilters = () => {
     setSearchTerm("");
@@ -74,7 +52,7 @@ const List = () => {
   return (
     <>
       <div className="listPage">
-        <h1> Mariposas de Oceanía </h1>
+
         <SearchBar
           onSearchChange={setSearchTerm} // Pasa la función para actualizar el término de búsqueda
           onRegionChange={setSelectedRegion} // Pasa la función para actualizar la región
@@ -93,6 +71,7 @@ const List = () => {
               <ButterflyCard //Llamamos al componente donde se encuentran las tarjetas.
                 key={butterfly.id} // Identifica al elemento, escogemos id porque es único para cada mariposa.
                 butterfly={butterfly}
+                setLoading={setLoading}
               />
             )
           )}
