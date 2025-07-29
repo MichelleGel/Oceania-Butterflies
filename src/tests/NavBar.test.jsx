@@ -13,7 +13,6 @@ describe("NavBar", () => {
         );
     });
 
-
     test('render NavBar component with logo', () => {
         const logoButterfly = screen.getAllByAltText(/Logo desktop/i)
         expect(logoButterfly).toBeDefined()
