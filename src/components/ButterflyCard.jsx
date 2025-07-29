@@ -1,10 +1,7 @@
 import "./ButterflyCard.css";
 import Button from "./Button";
-import { getOneButterfly, deleteButterfly } from '../services/ButterflyServices';
+import { deleteButterfly } from '../services/ButterflyServices';
 import Swal from 'sweetalert2';
-//import { useState } from 'react';
-import FormButterfly from "./FormButterfly";
-//import { set } from "react-hook-form";
 import { useNavigate } from "react-router-dom";
 
 
@@ -21,7 +18,7 @@ const TRANSFORMATIONS =
 
 // --- DEFINICIÓN DEL COMPONENTE ---
 // Este es nuestro componente. Recibe un objeto "butterfly" con todos los datos.
-const ButterflyCard = ({ butterfly, onUpdate }) => {
+const ButterflyCard = ({ butterfly, setLoading }) => {
 const navigate = useNavigate();
   //const formRef = useRef(null);//referencia para el scroll automático
 
@@ -52,12 +49,6 @@ const handleView = () => {
       action={handleView} />
 
       <Button
-        tooltip="Cargar información de la mariposa"
-        title="Ver Ficha"
-        action={() => getOneButterfly(butterfly.id)}
-      />
-
-      <Button
         tooltip="Actualizar Información Mariposa"
         title="Editar"
         action={handleEdit}
@@ -79,13 +70,8 @@ const handleView = () => {
           });
           if (confirmation.isConfirmed) {
             await deleteButterfly(butterfly.id);
-            Swal.fire('La mariposa fue eliminada correctamente.');
+            Swal.fire('La mariposa fue eliminada correctamente.').then(setLoading(true))
             // En lugar de recargar la página, mejor usar el callback
-            if (onUpdate) {
-              onUpdate();
-            } else {
-              window.location.reload();
-            }
           }
         }}
       />

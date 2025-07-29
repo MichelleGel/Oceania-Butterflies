@@ -3,7 +3,6 @@ import ButterflyCard from "../components/ButterflyCard"; //Importamos el compone
 import "./list.css"; //Importamos el CSS que le da estilo a esta página en particular
 import SearchBar from "../components/SearchBar"; //Importamos el componente de SearchBar
 import Map from "../components/Map"; //  Importamos el componente de Mapa
-import { Link } from "react-router-dom";
 import { getAllButterflies } from "../services/ButterflyServices";
 
 const List = () => {
@@ -13,7 +12,7 @@ const List = () => {
   const [butterflies, setButterflies] = useState([]);
   // const [ButterflyData, setButterflyData] = useState([]);
 
-  useEffect(() => {
+  useEffect(() => { //.
     const fetchButterflyData = async () => {
       try {
         const bfData = await getAllButterflies();
@@ -25,29 +24,6 @@ const List = () => {
     };
     fetchButterflyData();
   }, []);
-
-  //  useEffect(() => {
-  //     const fetchData = async () => {
-  //       try {
-  //         const animalData = await getAnimals();
-  //         setData(animalData);
-  //       } catch (error) {
-  //         console.error('Error:', error);
-  //       }
-  //     };
-
-  //     fetchData();
-  //   }, []);  //cuando se monta, se ejecuta
-
-  // export const getAllButterflies = async() => {
-  //     try {
-  //         const res = await axios.get(URL_API);
-  //         return res.data;
-  //     }
-  //     catch(error) {
-  //         console.error(`getAllButterflies error:`, error.message);
-  //         throw error;
-  //     }
 
   const handleClearFilters = () => {
     setSearchTerm("");
@@ -75,7 +51,7 @@ const List = () => {
   return (
     <>
       <div className="listPage">
-        <h1> Mariposas de Oceanía </h1>
+
         <SearchBar
           onSearchChange={setSearchTerm} // Pasa la función para actualizar el término de búsqueda
           onRegionChange={setSelectedRegion} // Pasa la función para actualizar la región
