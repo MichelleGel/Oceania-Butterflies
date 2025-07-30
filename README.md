@@ -12,9 +12,11 @@ A través de esta aplicación, buscamos crear conciencia sobre la biodiversidad 
 
 A continuación se muestran capturas reales de la aplicación en funcionamiento:
 
-Pagina principal con carrusel de imagenes              ----> (./public/home.png)
-se despliega el mapa y la lista completa de las cards  ----> (./public/explora.png)
-formulario para añadir mariposa                        ----> (./public/form.png)
+Pagina principal con carrusel de imagenes              ---->![Home](./public/home.png)
+Se despliega el mapa y la lista completa de las cards  ---->![Explora](./public/explora.png)
+Formulario para añadir mariposa                        ---->![form](./public/form.png)
+Pagina para contactar con las creadoras
+---->![contact](./public/creadoras.png)
 
 ## ✨ Funcionalidades
 
@@ -58,14 +60,15 @@ formulario para añadir mariposa                        ----> (./public/form.png
  ┣ 📂services/         # Lógica de conexión con la API
  ┣ 📜main.jsx          # Punto de entrada de React
  ┗ 📜index.css         # Estilos globales
-
+```
 ---
 
 ## 🧠 Diseño UX/UI
 🎨 Diseño desarrollado en Figma.
 
 🧾 Las decisiones de estilo (colores, tipografía, layout) fueron tomadas en conjunto por el equipo.
-🌸 [Oceania Butterflies (Figma)](https://www.figma.com/design/9UZKLUN5UjH4WxoPsPogVu/Grupo-5-Oceania?node-id)
+
+[Oceania Butterflies (Figma)](https://www.figma.com/design/9UZKLUN5UjH4WxoPsPogVu/Grupo-5-Oceania?node-id=0-1&p=f&t=jH7g2u1TeLkzgSZ8-0)
 
 ---
 
@@ -96,6 +99,8 @@ npm run test
 ## 🧪 Testing
 El proyecto utiliza Vitest para realizar pruebas unitarias y de integración en los componentes clave. Esto nos permite asegurar la calidad del código a medida que el proyecto evoluciona.
 
+![Test](./public/test.png)
+
 ---
 
 ## 🐛 Control de versiones
@@ -107,18 +112,21 @@ develop: rama de integración donde se combinan las funcionalidades.
 
 Cada coder trabajó en ramas individuales, que luego fueron integradas a develop mediante pull requests.
 
+![project](./public/project.png)
+
 ---
 
 ## 👥 Equipo de desarrollo
 Este proyecto fue realizado por 5 desarrolladoras como parte de un trabajo colaborativo. Una de las integrantes asumió el rol de Scrum Master, organizando tareas, deadlines y sprints con metodología ágil.
+```
 Michelle ---> Scrum Master, Developer.
 Camila ----> Developer.
 Gabriela --> Developer.
 Julia -----> Product Owner, Developer.
 Luisa -----> Developer.
-
+```
 ---
 
 ## 🤝 Agradecimientos
-Este proyecto ha sido posible gracias a la colaboración y esfuerzo conjunto del equipo y el acompañamiento del bootcamp de Factoría F5 (Celia Millán).
+Este proyecto ha sido posible gracias a la colaboración y esfuerzo conjunto del equipo y el acompañamiento del bootcamp de Factoría F5 (Celia Millán & Ana Aragón).
 
