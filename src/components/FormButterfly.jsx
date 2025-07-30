@@ -44,7 +44,7 @@ const FormButterfly = ({ initialData = {}, onSubmit, onCancel, mode = "create" }
         }
     }, [imageFile]);
 
-    const currentImage = imagePreview || (publicId?.startsWith('http') ? publicId : `https://res.cloudinary.com/${CLOUD_NAME}/image/upload/v1/${publicId}`);
+    const currentImage = imagePreview || (publicId ? (publicId.startsWith('http') ? publicId : `https://res.cloudinary.com/${CLOUD_NAME}/image/upload/v1/${publicId}`) : null);
 
     const tagsValue = watch("tags") || [];
 
