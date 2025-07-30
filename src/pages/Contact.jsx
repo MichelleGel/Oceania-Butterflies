@@ -1,5 +1,5 @@
-import '../pages/Contact.css'
 import styled from 'styled-components';
+
 
 
 const Card = ({name, role, image, linkedin, github, message}) => {
@@ -56,7 +56,7 @@ const Card = ({name, role, image, linkedin, github, message}) => {
       {
         name: "Camila Arenas",
         role: "Web Developer",
-        image: "https://i.pinimg.com/736x/62/a1/d0/62a1d0ba376b668fe931e20b6c7cfe52.jpg",
+        image: "../src/assets/imgcontact/camila-avatar.jpeg",
         linkedin: "https://linkedin.com/in/mcarenash",
         github: "https://github.com/mcarenashd",
         message: "¡Gracias por visitar nuestro sitio!"
@@ -64,31 +64,31 @@ const Card = ({name, role, image, linkedin, github, message}) => {
       {
         name: "Gabriela Hernandez",
         role: "Web Developer",
-        image: "https://i.pinimg.com/736x/62/a1/d0/62a1d0ba376b668fe931e20b6c7cfe52.jpg",
-        linkedin: "https://linkedin.com/in/",
-        github: "https://github.com/",
+        image: "../src/assets/imgcontact/gabriela-avatar.jpg",
+        linkedin: "https://www.linkedin.com/in/arianna-hernandez-berbesi-67aa491b3/",
+        github: "https://github.com/gabriela-her",
         message: "¡Gracias por visitar nuestro sitio!"
       },
       {
         name: "Julia Zarco",
         role: "Web Developer",
-        image: "https://i.pinimg.com/736x/62/a1/d0/62a1d0ba376b668fe931e20b6c7cfe52.jpg",
+        image: "../src/assets/imgcontact/julia-avatar.png",
         linkedin: "https://linkedin.com/in/",
-        github: "https://github.com/",
+        github: "https://github.com/juliazmor",
         message: "¡Gracias por visitar nuestro sitio!"
       },
     {
       name: "Luisa Silva",
         role: "Web Developer",
-        image: "https://i.pinimg.com/736x/62/a1/d0/62a1d0ba376b668fe931e20b6c7cfe52.jpg",
-        linkedin: "https://linkedin.com/in/",
+        image: "https://media.licdn.com/dms/image/v2/D4E03AQFRwCQfvCdxXw/profile-displayphoto-shrink_800_800/profile-displayphoto-shrink_800_800/0/1705925392107?e=1756944000&v=beta&t=sgXqvALqh6DrX9hB6p6rfRhfJnkeBmyhxs9DNv6HX6w",
+        linkedin: "https://linkedin.com/in/luisa-silva-martinez",
         github: "https://github.com/luisasilva99",
         message: "¡Gracias por visitar nuestro sitio!"
     },
     {
       name: "Michelle Gelves",
         role: "Web Developer",
-        image: "https://i.pinimg.com/736x/62/a1/d0/62a1d0ba376b668fe931e20b6c7cfe52.jpg",
+        image: "https://media.licdn.com/dms/image/v2/D4D03AQFs_8HwKaQJbg/profile-displayphoto-scale_200_200/B4DZgaDHjIG8AY-/0/1752783682275?e=1756944000&v=beta&t=_0L5N21_UakhBiIuH15-eqf8YGZ3OoMzEmMSlzhzcSk",
         linkedin: "https://linkedin.com/in/michelle-gelves",
         github: "https://github.com/MichelleGel",
         message: "¡Gracias por visitar nuestro sitio!"
@@ -123,7 +123,7 @@ const StyledWrapper = styled.div`
   margin-top: 2rem;
   margin-bottom: 1rem;
   color: #1B4332;
-  font-family: 'Open Sans', sans-serif;
+  font-family:'Playfair Display', serif;
 }
 
   .card {
@@ -173,7 +173,6 @@ const StyledWrapper = styled.div`
     font-weight: 900;
     font-size: 20px;
     margin-bottom:10px;
-
   }
 
   .content .text {
