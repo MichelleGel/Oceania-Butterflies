@@ -36,8 +36,15 @@ const Home = () => {
             <div className="card-carousel-wrapper">
                 <h2 className="carousel-title">Descubre las Mariposas de Oceanía</h2>
 
-                <p className='card-carousel-p'>Explora algunas de las especies más fascinantes que habitan este rincón del planeta. Conoce su historia, colores y características únicas que las convierten en verdaderas joyas aladas.
+                <p className='card-carousel-p'>Explora algunas de las especies más fascinantes que habitan este rincón del planeta. Conoce su historia, colores y características únicas que las convierten en verdaderas joyas aladas. <br></br><br></br>
+                    Las mariposas no solo destacan por su belleza: muchas de ellas cumplen un rol fundamental como polinizadoras en los ecosistemas de Oceanía. Al trasladar polen de una flor a otra, permiten que diversas especies de plantas florezcan, den frutos y mantengan el equilibrio natural.
+
+                    Sin estos pequeños agentes alados, desaparecerían muchas plantas esenciales para la biodiversidad, e incluso cultivos importantes para los seres humanos.
+                    Por eso, este espacio busca dar visibilidad y valor a estas mariposas, para que más personas reconozcan su impacto y la necesidad de protegerlas.
+
+                    A continuación, te invitamos a conocer algunas de estas especies clave:
                 </p>
+
 
                 <div className="card-carousel-section">
                     <Swiper

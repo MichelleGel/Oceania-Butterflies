@@ -1,6 +1,6 @@
 # 🦋 Mariposas Polinizadoras de Oceanía
 
-**Mariposas Polinizadoras de Oceanía** es una plataforma interactiva desarrollada por un equipo de 5 coder, como parte de un proyecto llamado "polinzadoras" del grupo FemCoders de Factoriaf5.
+**Mariposas Polinizadoras de Oceanía** es una plataforma interactiva desarrollada por un equipo de 5 coder, como parte de un proyecto llamado "polinzadoras" del grupo FemCoders de Factoria F5.
 
 ## 🧭 Objetivo
 
