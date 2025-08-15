@@ -79,8 +79,8 @@ Tener instalado Node.js (versión recomendada: 18+)
 ## 🛠️ Pasos para ejecutar el proyecto
 
 # Clonar el repositorio
-git clone https://github.com/tu-usuario/mariposas-oceania.git
-cd mariposas-oceania
+git clone https://github.com/MichelleGel/Oceania-Butterflies.git
+cd Oceania-Butterflies
 
 # Instalar dependencias
 npm install
