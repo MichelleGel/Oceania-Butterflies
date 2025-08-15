@@ -80,6 +80,7 @@ Tener instalado Node.js (versión recomendada: 18+)
 
 # Clonar el repositorio
 git clone https://github.com/MichelleGel/Oceania-Butterflies.git
+
 cd Oceania-Butterflies
 
 # Instalar dependencias
